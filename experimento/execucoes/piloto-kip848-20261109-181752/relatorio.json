@@ -1,0 +1,315 @@
+{
+  "janela": {
+    "inicio": 178343296435034,
+    "fim": 178433296576929
+  },
+  "margem": 37810,
+  "intervalos": 26,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": false,
+  "disponibilidade": true,
+  "sobreposicoes": [
+    {
+      "particao": "piloto-kip848-20261109-181752-0",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        2,
+        5
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 178383539364535,
+      "fim": 178393797877370,
+      "duracao": 10258512835
+    },
+    {
+      "particao": "piloto-kip848-20261109-181752-1",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        2,
+        5
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 178383539364535,
+      "fim": 178393797877370,
+      "duracao": 10258512835
+    },
+    {
+      "particao": "piloto-kip848-20261109-181752-2",
+      "trabalhadores": [
+        "w2",
+        "w1"
+      ],
+      "epocas": [
+        2,
+        5
+      ],
+      "fechamentos": [
+        "perdida",
+        "externo"
+      ],
+      "inicio": 178383839304657,
+      "fim": 178393797877370,
+      "duracao": 9958572713
+    }
+  ],
+  "tempo_orfao": {
+    "piloto-kip848-20261109-181752-0": {
+      "total": 1836145452,
+      "fracao": 0.020401583967969365,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178408310518029,
+          "fim": 178408926718995,
+          "duracao": 616200966
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-1": {
+      "total": 1836145452,
+      "fracao": 0.020401583967969365,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178408310518029,
+          "fim": 178408926718995,
+          "duracao": 616200966
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-2": {
+      "total": 9860781819,
+      "fracao": 0.10956406969340368,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178418296574931,
+          "fim": 178426937412264,
+          "duracao": 8640837333
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-3": {
+      "total": 15386578240,
+      "fracao": 0.17096171090431145,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178359555120523,
+          "fim": 178362526932045,
+          "duracao": 2971811522
+        },
+        {
+          "inicio": 178408310518029,
+          "fim": 178410864502928,
+          "duracao": 2553984899
+        },
+        {
+          "inicio": 178418296574931,
+          "fim": 178426937412264,
+          "duracao": 8640837333
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-4": {
+      "total": 9887989984,
+      "fracao": 0.10986638216121893,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178347541714919,
+          "fim": 178347568923084,
+          "duracao": 27208165
+        },
+        {
+          "inicio": 178418296574931,
+          "fim": 178426937412264,
+          "duracao": 8640837333
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-5": {
+      "total": 9887989984,
+      "fracao": 0.10986638216121893,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178347541714919,
+          "fim": 178347568923084,
+          "duracao": 27208165
+        },
+        {
+          "inicio": 178418296574931,
+          "fim": 178426937412264,
+          "duracao": 8640837333
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-6": {
+      "total": 2310873717,
+      "fracao": 0.025676334151739616,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178347541714919,
+          "fim": 178347568923084,
+          "duracao": 27208165
+        },
+        {
+          "inicio": 178395852206216,
+          "fim": 178396915927282,
+          "duracao": 1063721066
+        }
+      ]
+    },
+    "piloto-kip848-20261109-181752-7": {
+      "total": 5536080600,
+      "fracao": 0.06151190968630639,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 178343296435034,
+          "fim": 178344516379520,
+          "duracao": 1219944486
+        },
+        {
+          "inicio": 178347541714919,
+          "fim": 178347568923084,
+          "duracao": 27208165
+        },
+        {
+          "inicio": 178359583552201,
+          "fim": 178362526932045,
+          "duracao": 2943379844
+        },
+        {
+          "inicio": 178395570379177,
+          "fim": 178396915927282,
+          "duracao": 1345548105
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 23,
+    "total": 56542585248,
+    "minimo": 27208165,
+    "mediana": 1219944486,
+    "p90": 8640837333,
+    "maximo": 8640837333
+  },
+  "abertos": [
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-0",
+      "epoca": "7",
+      "inicio": "178408926718995",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-1",
+      "epoca": "7",
+      "inicio": "178408926718995",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-2",
+      "epoca": "8",
+      "inicio": "178426937412264",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-3",
+      "epoca": "8",
+      "inicio": "178426937412264",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-4",
+      "epoca": "8",
+      "inicio": "178426937412264",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-5",
+      "epoca": "8",
+      "inicio": "178426937412264",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-6",
+      "epoca": "6",
+      "inicio": "178396915927282",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-kip848-20261109-181752-7",
+      "epoca": "6",
+      "inicio": "178396915927282",
+      "fim": "178433296576929",
+      "fechamento": "janela"
+    }
+  ]
+}

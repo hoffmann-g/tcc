@@ -1,0 +1,28 @@
+[project]
+name = "orquestrador"
+version = "0.1.0"
+description = "Aplica traços de churn a um agrupamento Kafka e monta o histórico de posse"
+readme = "README.md"
+authors = [
+    { name = "Guilherme Hoffmann", email = "g.hoffmann.hbs@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "verificador",
+]
+
+[project.scripts]
+orquestrador = "orquestrador:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+verificador = { path = "../verificador", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

@@ -1,0 +1,210 @@
+{
+  "janela": {
+    "inicio": 180777615163158,
+    "fim": 180837615472202
+  },
+  "margem": 20532,
+  "intervalos": 13,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": true,
+  "disponibilidade": true,
+  "sobreposicoes": [],
+  "tempo_orfao": {
+    "referencia-cooperativo-20261109-185828-0": {
+      "total": 1173528287,
+      "fracao": 0.01955870404166447,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-1": {
+      "total": 1173528287,
+      "fracao": 0.01955870404166447,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-2": {
+      "total": 1173528287,
+      "fracao": 0.01955870404166447,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-3": {
+      "total": 4191994381,
+      "fracao": 0.0698662131544337,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        },
+        {
+          "inicio": 180781790477917,
+          "fim": 180784808944011,
+          "duracao": 3018466094
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-4": {
+      "total": 4192751466,
+      "fracao": 0.06987883117277498,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        },
+        {
+          "inicio": 180781790477917,
+          "fim": 180784809701096,
+          "duracao": 3019223179
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-5": {
+      "total": 4191994381,
+      "fracao": 0.0698662131544337,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        },
+        {
+          "inicio": 180781790477917,
+          "fim": 180784808944011,
+          "duracao": 3018466094
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-6": {
+      "total": 4192751466,
+      "fracao": 0.06987883117277498,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        },
+        {
+          "inicio": 180781790477917,
+          "fim": 180784809701096,
+          "duracao": 3019223179
+        }
+      ]
+    },
+    "referencia-cooperativo-20261109-185828-7": {
+      "total": 4191994381,
+      "fracao": 0.0698662131544337,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180777615163158,
+          "fim": 180778788691445,
+          "duracao": 1173528287
+        },
+        {
+          "inicio": 180781790477917,
+          "fim": 180784808944011,
+          "duracao": 3018466094
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 13,
+    "total": 24482070936,
+    "minimo": 1173528287,
+    "mediana": 1173528287,
+    "p90": 3019223179,
+    "maximo": 3019223179
+  },
+  "abertos": [
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-cooperativo-20261109-185828-0",
+      "epoca": "1",
+      "inicio": "180778788691445",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-cooperativo-20261109-185828-1",
+      "epoca": "1",
+      "inicio": "180778788691445",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-cooperativo-20261109-185828-2",
+      "epoca": "1",
+      "inicio": "180778788691445",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-cooperativo-20261109-185828-3",
+      "epoca": "3",
+      "inicio": "180784808944011",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-cooperativo-20261109-185828-4",
+      "epoca": "3",
+      "inicio": "180784809701096",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-cooperativo-20261109-185828-5",
+      "epoca": "3",
+      "inicio": "180784808944011",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-cooperativo-20261109-185828-6",
+      "epoca": "3",
+      "inicio": "180784809701096",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-cooperativo-20261109-185828-7",
+      "epoca": "3",
+      "inicio": "180784808944011",
+      "fim": "180837615472202",
+      "fechamento": "janela"
+    }
+  ]
+}

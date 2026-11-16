@@ -1,0 +1,241 @@
+% Referências do volume final de TCC I. Parte de proposta/fonte/referencias.bib, com as
+% entradas acrescentadas em 09/11/2026 para os comentários 4, 10 e 21 do orientador e para
+% a verificação no cliente Java (notas/formalizacao.md, seção 7).
+
+% --- Fundamentos ---------------------------------------------------------------------
+
+@inproceedings{birman1987,
+  author    = {Birman, Kenneth and Joseph, Thomas},
+  title     = {Exploiting Virtual Synchrony in Distributed Systems},
+  booktitle = {Proceedings of the 11th ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {123--138},
+  year      = {1987},
+  publisher = {ACM}
+}
+
+@article{chockler2001,
+  author  = {Chockler, Gregory V. and Keidar, Idit and Vitenberg, Roman},
+  title   = {Group Communication Specifications: A Comprehensive Study},
+  journal = {ACM Computing Surveys},
+  volume  = {33},
+  number  = {4},
+  pages   = {427--469},
+  year    = {2001}
+}
+
+@article{chandra1996,
+  author  = {Chandra, Tushar Deepak and Toueg, Sam},
+  title   = {Unreliable Failure Detectors for Reliable Distributed Systems},
+  journal = {Journal of the ACM},
+  volume  = {43},
+  number  = {2},
+  pages   = {225--267},
+  year    = {1996}
+}
+
+@inproceedings{gray1989,
+  author    = {Gray, Cary G. and Cheriton, David R.},
+  title     = {Leases: An Efficient Fault-Tolerant Mechanism for Distributed File Cache Consistency},
+  booktitle = {Proceedings of the 12th ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {202--210},
+  year      = {1989},
+  publisher = {ACM}
+}
+
+% --- Exemplos da introdução (comentário 4) --------------------------------------------
+% Bancos de dados: faixas de chaves atribuídas a um único servidor por vez (Bigtable,
+% com exclusividade garantida por lock no Chubby) e faixas do anel de hash a nós (Dynamo).
+% Motores de busca: fragmentos de índice distribuídos entre máquinas (Barroso et al.).
+% Orquestração: posse temporária de um recurso por lock com prazo (Chubby) e leases
+% (Gray e Cheriton, acima).
+
+@inproceedings{chang2006,
+  author    = {Chang, Fay and Dean, Jeffrey and Ghemawat, Sanjay and Hsieh, Wilson C. and
+               Wallach, Deborah A. and Burrows, Mike and Chandra, Tushar and Fikes, Andrew and
+               Gruber, Robert E.},
+  title     = {Bigtable: A Distributed Storage System for Structured Data},
+  booktitle = {Proceedings of the 7th USENIX Symposium on Operating Systems Design and
+               Implementation (OSDI)},
+  pages     = {205--218},
+  year      = {2006},
+  publisher = {USENIX Association}
+}
+
+@inproceedings{decandia2007,
+  author    = {DeCandia, Giuseppe and Hastorun, Deniz and Jampani, Madan and Kakulapati, Gunavardhan and
+               Lakshman, Avinash and Pilchin, Alex and Sivasubramanian, Swaminathan and
+               Vosshall, Peter and Vogels, Werner},
+  title     = {Dynamo: Amazon's Highly Available Key-value Store},
+  booktitle = {Proceedings of the 21st ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {205--220},
+  year      = {2007},
+  publisher = {ACM}
+}
+
+@article{barroso2003,
+  author  = {Barroso, Luiz Andr{\'e} and Dean, Jeffrey and H{\"o}lzle, Urs},
+  title   = {Web Search for a Planet: The {Google} Cluster Architecture},
+  journal = {IEEE Micro},
+  volume  = {23},
+  number  = {2},
+  pages   = {22--28},
+  year    = {2003}
+}
+
+@inproceedings{burrows2006,
+  author    = {Burrows, Mike},
+  title     = {The {Chubby} Lock Service for Loosely-Coupled Distributed Systems},
+  booktitle = {Proceedings of the 7th USENIX Symposium on Operating Systems Design and
+               Implementation (OSDI)},
+  pages     = {335--350},
+  year      = {2006},
+  publisher = {USENIX Association}
+}
+
+% --- Apache Kafka --------------------------------------------------------------------
+
+@inproceedings{kreps2011,
+  author    = {Kreps, Jay and Narkhede, Neha and Rao, Jun},
+  title     = {Kafka: A Distributed Messaging System for Log Processing},
+  booktitle = {Proceedings of the NetDB Workshop},
+  year      = {2011}
+}
+
+@book{kleppmann2017,
+  author    = {Kleppmann, Martin},
+  title     = {Designing Data-Intensive Applications},
+  publisher = {O'Reilly Media},
+  year      = {2017}
+}
+
+@misc{kafka240,
+  author       = {{Apache Software Foundation}},
+  title        = {What's New in Apache Kafka 2.4},
+  year         = {2019},
+  note         = {Dispon\'ivel em: https://blogsarchive.apache.org/kafka/entry/what-s-new-in-apache1. Acesso em: 14 set. 2026}
+}
+
+@misc{kafka400,
+  author       = {{Apache Software Foundation}},
+  title        = {Apache Kafka 4.0.0 Release Announcement},
+  year         = {2025},
+  note         = {Dispon\'ivel em: https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/. Acesso em: 9 nov. 2026}
+}
+
+@misc{kip429,
+  author       = {{Apache Software Foundation}},
+  title        = {{KIP-429}: Kafka Consumer Incremental Rebalance Protocol},
+  howpublished = {Apache Kafka Improvement Proposals},
+  year         = {2019},
+  note         = {Dispon\'ivel em: https://cwiki.apache.org/confluence/display/KAFKA/KIP-429. Acesso em: 14 set. 2026}
+}
+
+% Fonte primária para o cálculo da atribuição no coordenador (comentário 10).
+@misc{kip848,
+  author       = {{Apache Software Foundation}},
+  title        = {{KIP-848}: The Next Generation of the Consumer Rebalance Protocol},
+  howpublished = {Apache Kafka Improvement Proposals},
+  year         = {2023},
+  note         = {Dispon\'ivel em: https://cwiki.apache.org/confluence/display/KAFKA/KIP-848. Acesso em: 9 nov. 2026}
+}
+
+% VERIFICAR: ano de publicação da página.
+@misc{kip1251,
+  author       = {{Apache Software Foundation}},
+  title        = {{KIP-1251}: Assignment Epochs for Consumer Groups},
+  howpublished = {Apache Kafka Improvement Proposals},
+  year         = {2026},
+  note         = {Dispon\'ivel em: https://cwiki.apache.org/confluence/display/KAFKA/KIP-1251. Acesso em: 9 nov. 2026}
+}
+
+@misc{lacefield2025,
+  author       = {Lacefield, Jonathan},
+  title        = {{KIP-848}: A New Consumer Rebalance Protocol for Apache Kafka 4.0},
+  howpublished = {Confluent Blog},
+  year         = {2025},
+  note         = {Publicado em 3 jun. 2025. Dispon\'ivel em: https://www.confluent.io/blog/kip-848-consumer-rebalance-protocol/. Acesso em: 9 nov. 2026}
+}
+
+% Relato de fornecedor citado na seção 2.5 como exemplo de medição por tempo de
+% rebalanceamento: experimento único, 100 → 1000 partições com 10 consumidores, duração
+% medida consultando o estado do grupo a cada segundo; 103 s no clássico, 5 s no KIP-848.
+@misc{brebner2025,
+  author       = {Brebner, Paul},
+  title        = {Rebalance your Apache Kafka partitions with the next generation Consumer Rebalance Protocol: up to 20x faster!},
+  howpublished = {Instaclustr Blog},
+  year         = {2025},
+  note         = {Publicado em 8 jul. 2025. Dispon\'ivel em: https://www.instaclustr.com/blog/rebalance-your-apache-kafka-partitions-with-the-next-generation-consumer-rebalance-protocol/. Acesso em: 9 nov. 2026}
+}
+
+@misc{kafkadocs,
+  author       = {{Apache Software Foundation}},
+  title        = {Apache Kafka Documentation},
+  howpublished = {Documenta\c{c}\~ao oficial},
+  year         = {2026},
+  note         = {Dispon\'ivel em: https://kafka.apache.org/documentation/. Acesso em: 9 nov. 2026}
+}
+
+@misc{kafkajavadoc,
+  author       = {{Apache Software Foundation}},
+  title        = {{ConsumerRebalanceListener}, Apache Kafka 4.0 Javadoc},
+  year         = {2025},
+  note         = {Dispon\'ivel em: https://kafka.apache.org/40/javadoc/org/apache/kafka/clients/consumer/ConsumerRebalanceListener.html. Acesso em: 9 nov. 2026}
+}
+
+@misc{kafkasrc,
+  author       = {{Apache Software Foundation}},
+  title        = {Apache Kafka: c\'odigo-fonte do cliente Java, pacote org.apache.kafka.clients.consumer.internals},
+  howpublished = {Reposit\'orio apache/kafka, ramo trunk},
+  year         = {2026},
+  note         = {Classes ConsumerCoordinator, AbstractCoordinator, AbstractMembershipManager, ConsumerMembershipManager, AsyncKafkaConsumer e FetchCollector. Dispon\'ivel em: https://github.com/apache/kafka. Acesso em: 9 nov. 2026}
+}
+
+% --- Trabalhos relacionados ----------------------------------------------------------
+
+@article{kingsbury2020,
+  author  = {Kingsbury, Kyle and Alvaro, Peter},
+  title   = {Elle: Inferring Isolation Anomalies from Experimental Observations},
+  journal = {Proceedings of the VLDB Endowment},
+  volume  = {14},
+  number  = {3},
+  pages   = {268--280},
+  year    = {2020}
+}
+
+% Autores e páginas conferidos no Crossref em 09/11/2026 (comentário 21). O artigo
+% modela a comunicação produtor-consumidor e não trata de composição de grupo.
+@incollection{sun2024,
+  author    = {Sun, Meng and Chen, Zhirui},
+  title     = {Formal Modeling and Verification of Kafka Producer-Consumer
+               Communication in Mediator},
+  booktitle = {Intelligent Computing (SAI 2024)},
+  series    = {Lecture Notes in Networks and Systems},
+  volume    = {1016},
+  pages     = {603--619},
+  publisher = {Springer},
+  address   = {Cham},
+  year      = {2024},
+  note      = {DOI: 10.1007/978-3-031-62281-6\_41}
+}
+
+@inproceedings{xu2021,
+  author    = {Xu, Jiaqi and Yin, Jiawen and Zhu, Huibiao and Xiao, Lili},
+  title     = {Modeling and Verifying Producer-Consumer Communication in
+               Kafka Using {CSP}},
+  booktitle = {Proceedings of the 7th Conference on the Engineering of
+               Computer Based Systems (ECBS)},
+  publisher = {ACM},
+  year      = {2021},
+  note      = {DOI: 10.1145/3459960.3459961}
+}
+
+@inproceedings{sinha2024,
+  author    = {Sinha, Saloni and Kang, Eunsuk},
+  title     = {Formal Modeling and Analysis of Apache Kafka in {Alloy 6}},
+  booktitle = {Rigorous State-Based Methods (ABZ 2024)},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  address   = {Cham},
+  year      = {2024},
+  note      = {Best Paper Award. DOI: 10.1007/978-3-031-63790-2\_2}
+}

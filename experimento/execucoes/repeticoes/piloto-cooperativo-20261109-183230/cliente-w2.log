@@ -1,0 +1,272 @@
+18:32:33.110 [main] INFO org.apache.kafka.common.config.AbstractConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = w2
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = piloto-cooperativo-20261109-183230
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+18:32:33.179 [main] INFO org.apache.kafka.common.telemetry.internals.KafkaMetricsCollector - initializing Kafka metrics collector
+18:32:33.552 [main] INFO org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] 
+****************************************************************
+* The consumer rebalance protocol (KIP-848) is production-ready!
+* Set the consumer configuration group.protocol=consumer to try it out.
+* See https://kafka.apache.org/documentation/#consumer_rebalance_protocol
+****************************************************************
+18:32:33.601 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka version: 4.3.2
+18:32:33.601 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka commitId: 0a6c96d3b61167f1
+18:32:33.601 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1794259953597
+18:32:33.617 [main] INFO org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Subscribed to topic(s): piloto-cooperativo-20261109-183230
+18:32:34.027 [main] INFO org.apache.kafka.clients.Metadata - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Cluster ID: 5L6g3nShT-eMCtK--X86sw
+18:32:34.034 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+18:32:34.048 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:32:34.070 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: need to re-join with the given member-id: w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213
+18:32:34.070 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:32:37.014 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=2, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:37.022 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=2, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:37.027 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       []
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     []
+
+18:32:37.028 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[])
+18:32:37.028 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: []
+18:32:40.018 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: group is already rebalancing
+18:32:40.021 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:32:40.025 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=3, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:40.031 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=3, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:40.036 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Revoked partitions (owned - assigned):     []
+
+18:32:40.037 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7])
+18:32:40.040 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+18:32:40.066 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:32:40.066 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-7 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:32:40.067 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:32:40.067 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:32:52.031 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: group is already rebalancing
+18:32:52.035 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:32:52.039 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=4, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:52.045 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=4, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:52.046 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+	Current owned partitions:                  [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     [piloto-cooperativo-20261109-183230-7]
+
+18:32:52.046 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Revoke previously assigned partitions [piloto-cooperativo-20261109-183230-7]
+18:32:52.047 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: need to revoke partitions [piloto-cooperativo-20261109-183230-7] as indicated by the current assignment and re-join
+18:32:52.048 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6])
+18:32:52.048 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: []
+18:32:52.053 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:32:55.051 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=5, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:55.056 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=5, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}
+18:32:55.057 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+	Current owned partitions:                  [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     []
+
+18:32:55.057 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6])
+18:32:55.058 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: []
+18:33:22.861 [kafka-coordinator-heartbeat-thread | piloto-cooperativo-20261109-183230] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+18:33:22.861 [kafka-coordinator-heartbeat-thread | piloto-cooperativo-20261109-183230] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+18:33:22.862 [kafka-coordinator-heartbeat-thread | piloto-cooperativo-20261109-183230] INFO org.apache.kafka.clients.NetworkClient - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Client requested disconnect from node 2147483646
+18:33:22.867 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+18:33:22.867 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+18:33:22.867 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+18:33:22.952 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+18:33:22.959 [main] ERROR org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Offset commit failed on partition piloto-cooperativo-20261109-183230-4 at offset 0: The coordinator is not aware of this member.
+18:33:22.960 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] OffsetCommit failed with Generation{generationId=5, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'}: The coordinator is not aware of this member.
+18:33:22.960 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Resetting generation and member id due to: encountered UNKNOWN_MEMBER_ID from OFFSET_COMMIT response
+18:33:22.960 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: encountered UNKNOWN_MEMBER_ID from OFFSET_COMMIT response
+18:33:22.961 [main] WARN org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Asynchronous auto-commit of offsets {piloto-cooperativo-20261109-183230-4=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-cooperativo-20261109-183230-6=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-cooperativo-20261109-183230-5=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing max.poll.interval.ms or by reducing the maximum size of batches returned in poll() with max.poll.records.
+18:33:22.961 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Failing OffsetCommit request since the consumer is not part of an active group
+18:33:22.962 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Attempt to heartbeat with stale Generation{generationId=5, memberId='w2-3295f4e7-81a9-4d6e-bee2-1b129f1de213', protocol='cooperative-sticky'} and group instance id Optional.empty failed due to UNKNOWN_MEMBER_ID, ignoring the error
+18:33:22.962 [main] ERROR org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Asynchronous auto-commit of offsets failed: Offset commit cannot be completed since the consumer is not part of an active group for auto partition assignment; it is likely that the consumer was kicked out of the group.. Will continue to join group.
+18:33:22.962 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Giving away all assigned partitions as lost since generation/memberID has been reset,indicating that consumer is in old state or no longer part of the group
+18:33:22.962 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Lost previously assigned partitions [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+18:33:22.963 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:33:22.966 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: need to re-join with the given member-id: w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca
+18:33:22.966 [main] WARN org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Asynchronous auto-commit of offsets {piloto-cooperativo-20261109-183230-4=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-cooperativo-20261109-183230-6=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-cooperativo-20261109-183230-5=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}} failed: Offset commit cannot be completed since the consumer is not part of an active group for auto partition assignment; it is likely that the consumer was kicked out of the group.
+18:33:22.967 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:33:25.080 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=7, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:25.085 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=7, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:25.086 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       []
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     []
+
+18:33:25.086 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[])
+18:33:25.087 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: []
+18:33:28.082 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: group is already rebalancing
+18:33:28.083 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:33:28.085 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=8, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:28.088 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=8, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:28.089 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7]
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7]
+	Revoked partitions (owned - assigned):     []
+
+18:33:28.089 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7])
+18:33:28.089 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7]
+18:33:28.091 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:28.091 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-7 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:40.091 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: group is already rebalancing
+18:33:40.094 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:33:40.098 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=9, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:40.103 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=9, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:40.103 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Current owned partitions:                  [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7]
+	Added partitions (assigned - owned):       [piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+	Revoked partitions (owned - assigned):     []
+
+18:33:40.104 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-7, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6])
+18:33:40.104 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: [piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6]
+18:33:40.106 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:40.107 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:58.106 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: group is already rebalancing
+18:33:58.109 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] (Re-)joining group
+18:33:58.112 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully joined group with generation Generation{generationId=10, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:58.130 [main] INFO org.apache.kafka.clients.consumer.internals.AbstractStickyAssignor - Final assignment of partitions to consumers: 
+{w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7, piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3]}
+18:33:58.131 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Finished assignment for group at generation 10: {w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca=Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7, piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3])}
+18:33:58.135 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Successfully synced group in generation Generation{generationId=10, memberId='w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca', protocol='cooperative-sticky'}
+18:33:58.136 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Updating assignment with
+	Assigned partitions:                       [piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3, piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Current owned partitions:                  [piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+	Added partitions (assigned - owned):       [piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3]
+	Revoked partitions (owned - assigned):     []
+
+18:33:58.136 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Notifying assignor about the new Assignment(partitions=[piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7, piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3])
+18:33:58.136 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Adding newly assigned partitions: [piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3]
+18:33:58.139 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-3 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:58.139 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:58.139 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-1 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:33:58.140 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-cooperativo-20261109-183230-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:34:02.870 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Revoke previously assigned partitions [piloto-cooperativo-20261109-183230-0, piloto-cooperativo-20261109-183230-1, piloto-cooperativo-20261109-183230-2, piloto-cooperativo-20261109-183230-3, piloto-cooperativo-20261109-183230-4, piloto-cooperativo-20261109-183230-5, piloto-cooperativo-20261109-183230-6, piloto-cooperativo-20261109-183230-7]
+18:34:02.871 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Member w2-ec898ef7-f927-4599-abba-fb4a9b5c6cca sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer is being closed
+18:34:02.872 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Resetting generation and member id due to: consumer pro-actively leaving the group
+18:34:02.872 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=piloto-cooperativo-20261109-183230] Request joining group due to: consumer pro-actively leaving the group
+18:34:03.314 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics scheduler closed
+18:34:03.315 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+18:34:03.316 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+18:34:03.316 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics reporters closed
+18:34:03.335 [main] INFO org.apache.kafka.common.utils.AppInfoParser - App info kafka.consumer for w2 unregistered

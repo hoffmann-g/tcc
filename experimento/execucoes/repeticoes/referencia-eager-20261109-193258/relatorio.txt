@@ -1,0 +1,27 @@
+histórico: 16 intervalos, 8 partições, 3 trabalhadores
+janela: [180903737167915, 180963737287389) ns (60.000 s)
+margem: 18966 ns
+
+exclusividade: ok, nenhuma sobreposição acima da margem
+
+disponibilidade: ok, todas as partições cobertas no fim da janela
+tempo órfão por partição:
+  referencia-eager-20261109-193258-0      1.283 s  ( 2.14%)  2 lacunas
+  referencia-eager-20261109-193258-1      1.283 s  ( 2.14%)  2 lacunas
+  referencia-eager-20261109-193258-2      1.283 s  ( 2.14%)  2 lacunas
+  referencia-eager-20261109-193258-3      1.295 s  ( 2.16%)  2 lacunas
+  referencia-eager-20261109-193258-4      1.292 s  ( 2.15%)  2 lacunas
+  referencia-eager-20261109-193258-5      1.295 s  ( 2.16%)  2 lacunas
+  referencia-eager-20261109-193258-6      1.292 s  ( 2.15%)  2 lacunas
+  referencia-eager-20261109-193258-7      1.295 s  ( 2.16%)  2 lacunas
+  lacunas: 16, total 10.318 s, mediana 0.032 s, p90 1.262 s, máx 1.262 s
+
+intervalos abertos no fim da janela: 8
+  referencia-eager-20261109-193258-0 w2 (e=2) desde 180908003318139
+  referencia-eager-20261109-193258-1 w2 (e=2) desde 180908003318139
+  referencia-eager-20261109-193258-2 w2 (e=2) desde 180908003318139
+  referencia-eager-20261109-193258-3 w1 (e=2) desde 180908014821308
+  referencia-eager-20261109-193258-4 w3 (e=2) desde 180908012300214
+  referencia-eager-20261109-193258-5 w1 (e=2) desde 180908014821308
+  referencia-eager-20261109-193258-6 w3 (e=2) desde 180908012300214
+  referencia-eager-20261109-193258-7 w1 (e=2) desde 180908014821308

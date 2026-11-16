@@ -1,0 +1,25 @@
+{
+  "nome": "piloto",
+  "descricao": "Entrada, suspensão acima do tempo de sessão, saída ordenada e morte.",
+  "protocolo": "eager",
+  "topico": "piloto-eager-20261109-184457",
+  "grupo": "piloto-eager-20261109-184457",
+  "particoes": 8,
+  "duracao_s": 90.0,
+  "t0_mono_ns": 179966614149397,
+  "t1_mono_ns": 180056614408934,
+  "t0_relogio_ns": 1794260699755896186,
+  "sessao_ms": 10000,
+  "heartbeat_ms": 3000,
+  "poll_ms": 500,
+  "trabalho_ms": 0,
+  "sessao_definida_em": "cliente",
+  "broker": "apache/kafka:4.3.2",
+  "kafka_clients": "4.3.2",
+  "java": "openjdk version \"26.0.2\" 2026-07-21",
+  "trabalhadores": [
+    "w1",
+    "w2",
+    "w3"
+  ]
+}

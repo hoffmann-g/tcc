@@ -1,0 +1,25 @@
+{
+  "nome": "piloto",
+  "descricao": "Entrada, suspensão acima do tempo de sessão, saída ordenada e morte.",
+  "protocolo": "kip848",
+  "topico": "piloto-kip848-20261109-183403",
+  "grupo": "piloto-kip848-20261109-183403",
+  "particoes": 8,
+  "duracao_s": 90.0,
+  "t0_mono_ns": 179312958463538,
+  "t1_mono_ns": 179402958772150,
+  "t0_relogio_ns": 1794260046100242087,
+  "sessao_ms": 10000,
+  "heartbeat_ms": 3000,
+  "poll_ms": 500,
+  "trabalho_ms": 0,
+  "sessao_definida_em": "servidor",
+  "broker": "apache/kafka:4.3.2",
+  "kafka_clients": "4.3.2",
+  "java": "openjdk version \"26.0.2\" 2026-07-21",
+  "trabalhadores": [
+    "w1",
+    "w2",
+    "w3"
+  ]
+}

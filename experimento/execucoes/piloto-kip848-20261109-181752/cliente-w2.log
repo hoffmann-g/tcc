@@ -1,0 +1,265 @@
+18:17:56.760 [main] INFO org.apache.kafka.common.config.AbstractConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = w2
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = piloto-kip848-20261109-181752
+	group.instance.id = null
+	group.protocol = consumer
+	group.remote.assignor = uniform
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+18:17:56.847 [main] INFO org.apache.kafka.common.telemetry.internals.KafkaMetricsCollector - initializing Kafka metrics collector
+18:17:57.168 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka version: 4.3.2
+18:17:57.168 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka commitId: 0a6c96d3b61167f1
+18:17:57.169 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1794259077164
+18:17:57.182 [main] INFO org.apache.kafka.clients.consumer.internals.AsyncKafkaConsumer - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Subscribed to topic(s): piloto-kip848-20261109-181752
+18:17:57.447 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 0 transitioned from UNSUBSCRIBED to JOINING.
+18:17:57.568 [consumer_background_thread] INFO org.apache.kafka.clients.Metadata - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Cluster ID: 5L6g3nShT-eMCtK--X86sw
+18:17:57.578 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CoordinatorRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Discovered group coordinator Coordinator(key='piloto-kip848-20261109-181752', nodeId=1, host='localhost', port=9092, errorCode=0, errorMessage='')
+18:17:57.621 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from JOINING to RECONCILING.
+18:17:57.634 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 0
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Revoked partitions (owned - assigned):     []
+
+18:17:57.657 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+18:17:57.665 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from RECONCILING to ACKNOWLEDGING.
+18:17:57.666 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from ACKNOWLEDGING to STABLE.
+18:17:57.694 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-7
+18:17:57.694 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-6
+18:17:57.694 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-5
+18:17:57.694 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-4
+18:17:57.694 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-3
+18:17:57.695 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-2
+18:17:57.695 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-1
+18:17:57.695 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Found no committed offset for partition piloto-kip848-20261109-181752-0
+18:17:57.728 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-7 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.730 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-6 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.730 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-5 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.731 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-4 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.731 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-3 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.731 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-2 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.732 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-1 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:17:57.732 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Resetting offset for partition piloto-kip848-20261109-181752-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+18:18:00.672 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from STABLE to RECONCILING.
+18:18:00.674 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 1
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3]
+	Current owned partitions:                  [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     [piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+
+18:18:00.681 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Revoking previously assigned partitions [piloto-kip848-20261109-181752-7, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-4]
+18:18:00.683 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Revoke previously assigned partitions [piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+18:18:00.684 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: []
+18:18:00.685 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from RECONCILING to ACKNOWLEDGING.
+18:18:00.686 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 2 transitioned from ACKNOWLEDGING to STABLE.
+18:18:12.692 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 3 transitioned from STABLE to RECONCILING.
+18:18:12.692 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 2
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2]
+	Current owned partitions:                  [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3]
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     [piloto-kip848-20261109-181752-3]
+
+18:18:12.695 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Revoking previously assigned partitions [piloto-kip848-20261109-181752-3]
+18:18:12.696 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Revoke previously assigned partitions [piloto-kip848-20261109-181752-3]
+18:18:12.697 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: []
+18:18:12.699 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 3 transitioned from RECONCILING to ACKNOWLEDGING.
+18:18:12.699 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 3 transitioned from ACKNOWLEDGING to STABLE.
+18:18:46.440 [consumer_background_thread] ERROR org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] OffsetCommit failed with UNKNOWN_MEMBER_ID
+18:18:46.441 [consumer_background_thread] WARN org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Auto-commit of offsets {piloto-kip848-20261109-181752-2=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-kip848-20261109-181752-1=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}, piloto-kip848-20261109-181752-0=OffsetAndMetadata{offset=0, leaderEpoch=null, metadata=''}} failed
+org.apache.kafka.clients.consumer.CommitFailedException: OffsetCommit failed with unknown member ID. The coordinator is not aware of this member.
+	at org.apache.kafka.clients.consumer.internals.CommitRequestManager$OffsetCommitRequestState.onResponse(CommitRequestManager.java:904)
+	at org.apache.kafka.clients.consumer.internals.CommitRequestManager$RetriableRequestState.handleClientResponse(CommitRequestManager.java:1027)
+	at org.apache.kafka.clients.consumer.internals.CommitRequestManager$RetriableRequestState.lambda$buildRequestWithResponseHandling$0(CommitRequestManager.java:1017)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:884)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:862)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:531)
+	at java.base/java.util.concurrent.CompletableFuture.complete(CompletableFuture.java:2206)
+	at org.apache.kafka.clients.consumer.internals.NetworkClientDelegate$FutureCompletionHandler.onComplete(NetworkClientDelegate.java:451)
+	at org.apache.kafka.clients.ClientResponse.onComplete(ClientResponse.java:154)
+	at org.apache.kafka.clients.NetworkClient.completeResponses(NetworkClient.java:669)
+	at org.apache.kafka.clients.NetworkClient.poll(NetworkClient.java:661)
+	at org.apache.kafka.clients.consumer.internals.NetworkClientDelegate.poll(NetworkClientDelegate.java:166)
+	at org.apache.kafka.clients.consumer.internals.NetworkClientDelegate.poll(NetworkClientDelegate.java:148)
+	at org.apache.kafka.clients.consumer.internals.ConsumerNetworkThread.runOnce(ConsumerNetworkThread.java:228)
+	at org.apache.kafka.clients.consumer.internals.ConsumerNetworkThread.run(ConsumerNetworkThread.java:162)
+18:18:46.442 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerHeartbeatRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] ConsumerGroupHeartbeatRequest failed because member __1LhlTkRhegCh4UJVKpgQ is unknown. in 108ms: Member __1LhlTkRhegCh4UJVKpgQ is not a member of group piloto-kip848-20261109-181752.
+18:18:46.442 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 4 transitioned from STABLE to FENCED.
+18:18:46.442 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ won't include epoch in following offset commit/fetch requests because it has left the group.
+18:18:46.939 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Lost previously assigned partitions [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2]
+18:18:46.940 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 0 transitioned from FENCED to JOINING.
+18:18:46.950 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from JOINING to RECONCILING.
+18:18:47.049 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 0
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       []
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       []
+	Revoked partitions (owned - assigned):     []
+
+18:18:47.050 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: []
+18:18:47.051 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from RECONCILING to ACKNOWLEDGING.
+18:18:47.051 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from ACKNOWLEDGING to STABLE.
+18:18:50.055 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from STABLE to RECONCILING.
+18:18:50.055 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 1
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Current owned partitions:                  []
+	Added partitions (assigned - owned):       [piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Revoked partitions (owned - assigned):     []
+
+18:18:50.057 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: [piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+18:18:50.058 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from RECONCILING to ACKNOWLEDGING.
+18:18:50.058 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 6 transitioned from ACKNOWLEDGING to STABLE.
+18:18:50.065 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-7 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:18:50.065 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:02.064 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 7 transitioned from STABLE to RECONCILING.
+18:19:02.065 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 2
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Current owned partitions:                  [piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Added partitions (assigned - owned):       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1]
+	Revoked partitions (owned - assigned):     []
+
+18:19:02.068 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1]
+18:19:02.068 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 7 transitioned from RECONCILING to ACKNOWLEDGING.
+18:19:02.069 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 7 transitioned from ACKNOWLEDGING to STABLE.
+18:19:02.071 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-1 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:02.072 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:20.074 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 8 transitioned from STABLE to RECONCILING.
+18:19:20.075 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Reconciling assignment with local epoch 3
+	Member:                                    __1LhlTkRhegCh4UJVKpgQ
+	Assigned partitions:                       [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Current owned partitions:                  [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+	Added partitions (assigned - owned):       [piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5]
+	Revoked partitions (owned - assigned):     []
+
+18:19:20.078 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Adding newly assigned partitions: [piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5]
+18:19:20.079 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 8 transitioned from RECONCILING to ACKNOWLEDGING.
+18:19:20.079 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 8 transitioned from ACKNOWLEDGING to STABLE.
+18:19:20.083 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:20.084 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:20.084 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-3 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:20.084 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition piloto-kip848-20261109-181752-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+18:19:26.451 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Revoke previously assigned partitions [piloto-kip848-20261109-181752-0, piloto-kip848-20261109-181752-1, piloto-kip848-20261109-181752-2, piloto-kip848-20261109-181752-3, piloto-kip848-20261109-181752-4, piloto-kip848-20261109-181752-5, piloto-kip848-20261109-181752-6, piloto-kip848-20261109-181752-7]
+18:19:26.453 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch 8 transitioned from STABLE to PREPARE_LEAVING.
+18:19:26.453 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.CommitRequestManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ won't include epoch in following offset commit/fetch requests because it has left the group.
+18:19:26.453 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch -1 transitioned from PREPARE_LEAVING to LEAVING.
+18:19:26.453 [consumer_background_thread] INFO org.apache.kafka.clients.consumer.internals.ConsumerMembershipManager - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Member __1LhlTkRhegCh4UJVKpgQ with epoch -1 transitioned from LEAVING to UNSUBSCRIBED.
+18:19:26.456 [main] INFO org.apache.kafka.clients.consumer.internals.AsyncKafkaConsumer - [Consumer clientId=w2, groupId=piloto-kip848-20261109-181752] Completed leaving the group
+18:19:26.773 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics scheduler closed
+18:19:26.773 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+18:19:26.773 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+18:19:26.774 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics reporters closed
+18:19:26.776 [main] INFO org.apache.kafka.common.utils.AppInfoParser - App info kafka.consumer for w2 unregistered

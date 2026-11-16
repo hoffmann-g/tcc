@@ -1,0 +1,27 @@
+histórico: 13 intervalos, 8 partições, 3 trabalhadores
+janela: [180651153374449, 180711153615486) ns (60.000 s)
+margem: 66502 ns
+
+exclusividade: ok, nenhuma sobreposição acima da margem
+
+disponibilidade: ok, todas as partições cobertas no fim da janela
+tempo órfão por partição:
+  referencia-kip848-20261109-185621-0      1.180 s  ( 1.97%)  1 lacunas
+  referencia-kip848-20261109-185621-1      1.180 s  ( 1.97%)  1 lacunas
+  referencia-kip848-20261109-185621-2      1.180 s  ( 1.97%)  1 lacunas
+  referencia-kip848-20261109-185621-3      4.176 s  ( 6.96%)  2 lacunas
+  referencia-kip848-20261109-185621-4      4.176 s  ( 6.96%)  2 lacunas
+  referencia-kip848-20261109-185621-5      4.169 s  ( 6.95%)  2 lacunas
+  referencia-kip848-20261109-185621-6      4.169 s  ( 6.95%)  2 lacunas
+  referencia-kip848-20261109-185621-7      4.169 s  ( 6.95%)  2 lacunas
+  lacunas: 13, total 24.399 s, mediana 1.180 s, p90 2.995 s, máx 2.995 s
+
+intervalos abertos no fim da janela: 8
+  referencia-kip848-20261109-185621-0 w3 (e=2) desde 180652333539388
+  referencia-kip848-20261109-185621-1 w3 (e=2) desde 180652333539388
+  referencia-kip848-20261109-185621-2 w3 (e=2) desde 180652333539388
+  referencia-kip848-20261109-185621-3 w1 (e=4) desde 180658361897978
+  referencia-kip848-20261109-185621-4 w1 (e=4) desde 180658361897978
+  referencia-kip848-20261109-185621-5 w2 (e=4) desde 180658355672596
+  referencia-kip848-20261109-185621-6 w2 (e=4) desde 180658355672596
+  referencia-kip848-20261109-185621-7 w2 (e=4) desde 180658355672596

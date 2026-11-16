@@ -1,0 +1,25 @@
+{
+  "nome": "referencia",
+  "descricao": "Sem churn. Três trabalhadores entram em t=0 e permanecem até o fim.",
+  "protocolo": "cooperativo",
+  "topico": "referencia-cooperativo-20261109-185828",
+  "grupo": "referencia-cooperativo-20261109-185828",
+  "particoes": 8,
+  "duracao_s": 60.0,
+  "t0_mono_ns": 180777615163158,
+  "t1_mono_ns": 180837615472202,
+  "t0_relogio_ns": 1794261510756927116,
+  "sessao_ms": 10000,
+  "heartbeat_ms": 3000,
+  "poll_ms": 500,
+  "trabalho_ms": 0,
+  "sessao_definida_em": "cliente",
+  "broker": "apache/kafka:4.3.2",
+  "kafka_clients": "4.3.2",
+  "java": "openjdk version \"26.0.2\" 2026-07-21",
+  "trabalhadores": [
+    "w1",
+    "w2",
+    "w3"
+  ]
+}

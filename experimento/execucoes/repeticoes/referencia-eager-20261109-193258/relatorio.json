@@ -1,0 +1,225 @@
+{
+  "janela": {
+    "inicio": 180903737167915,
+    "fim": 180963737287389
+  },
+  "margem": 18966,
+  "intervalos": 16,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": true,
+  "disponibilidade": true,
+  "sobreposicoes": [],
+  "tempo_orfao": {
+    "referencia-eager-20261109-193258-0": {
+      "total": 1283161891,
+      "fracao": 0.02138598893217264,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908003318139,
+          "duracao": 20707918
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-1": {
+      "total": 1283161891,
+      "fracao": 0.02138598893217264,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908003318139,
+          "duracao": 20707918
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-2": {
+      "total": 1283161891,
+      "fracao": 0.02138598893217264,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908003318139,
+          "duracao": 20707918
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-3": {
+      "total": 1294665060,
+      "fracao": 0.021577708033748505,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908014821308,
+          "duracao": 32211087
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-4": {
+      "total": 1292143966,
+      "fracao": 0.021535689884083112,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908012300214,
+          "duracao": 29689993
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-5": {
+      "total": 1294665060,
+      "fracao": 0.021577708033748505,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908014821308,
+          "duracao": 32211087
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-6": {
+      "total": 1292143966,
+      "fracao": 0.021535689884083112,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908012300214,
+          "duracao": 29689993
+        }
+      ]
+    },
+    "referencia-eager-20261109-193258-7": {
+      "total": 1294665060,
+      "fracao": 0.021577708033748505,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180903737167915,
+          "fim": 180904999621888,
+          "duracao": 1262453973
+        },
+        {
+          "inicio": 180907982610221,
+          "fim": 180908014821308,
+          "duracao": 32211087
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 16,
+    "total": 10317768785,
+    "minimo": 20707918,
+    "mediana": 32211087,
+    "p90": 1262453973,
+    "maximo": 1262453973
+  },
+  "abertos": [
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-eager-20261109-193258-0",
+      "epoca": "2",
+      "inicio": "180908003318139",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-eager-20261109-193258-1",
+      "epoca": "2",
+      "inicio": "180908003318139",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-eager-20261109-193258-2",
+      "epoca": "2",
+      "inicio": "180908003318139",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-eager-20261109-193258-3",
+      "epoca": "2",
+      "inicio": "180908014821308",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-eager-20261109-193258-4",
+      "epoca": "2",
+      "inicio": "180908012300214",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-eager-20261109-193258-5",
+      "epoca": "2",
+      "inicio": "180908014821308",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-eager-20261109-193258-6",
+      "epoca": "2",
+      "inicio": "180908012300214",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-eager-20261109-193258-7",
+      "epoca": "2",
+      "inicio": "180908014821308",
+      "fim": "180963737287389",
+      "fechamento": "janela"
+    }
+  ]
+}

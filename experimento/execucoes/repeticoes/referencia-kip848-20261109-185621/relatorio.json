@@ -1,0 +1,210 @@
+{
+  "janela": {
+    "inicio": 180651153374449,
+    "fim": 180711153615486
+  },
+  "margem": 66502,
+  "intervalos": 13,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": true,
+  "disponibilidade": true,
+  "sobreposicoes": [],
+  "tempo_orfao": {
+    "referencia-kip848-20261109-185621-0": {
+      "total": 1180164939,
+      "fracao": 0.01966933663270177,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-1": {
+      "total": 1180164939,
+      "fracao": 0.01966933663270177,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-2": {
+      "total": 1180164939,
+      "fracao": 0.01966933663270177,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-3": {
+      "total": 4175509419,
+      "fracao": 0.06959154408104982,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        },
+        {
+          "inicio": 180655366553498,
+          "fim": 180658361897978,
+          "duracao": 2995344480
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-4": {
+      "total": 4175509419,
+      "fracao": 0.06959154408104982,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        },
+        {
+          "inicio": 180655366553498,
+          "fim": 180658361897978,
+          "duracao": 2995344480
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-5": {
+      "total": 4169284037,
+      "fracao": 0.0694877881312002,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        },
+        {
+          "inicio": 180655366553498,
+          "fim": 180658355672596,
+          "duracao": 2989119098
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-6": {
+      "total": 4169284037,
+      "fracao": 0.0694877881312002,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        },
+        {
+          "inicio": 180655366553498,
+          "fim": 180658355672596,
+          "duracao": 2989119098
+        }
+      ]
+    },
+    "referencia-kip848-20261109-185621-7": {
+      "total": 4169284037,
+      "fracao": 0.0694877881312002,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 180651153374449,
+          "fim": 180652333539388,
+          "duracao": 1180164939
+        },
+        {
+          "inicio": 180655366553498,
+          "fim": 180658355672596,
+          "duracao": 2989119098
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 13,
+    "total": 24399365766,
+    "minimo": 1180164939,
+    "mediana": 1180164939,
+    "p90": 2995344480,
+    "maximo": 2995344480
+  },
+  "abertos": [
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-kip848-20261109-185621-0",
+      "epoca": "2",
+      "inicio": "180652333539388",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-kip848-20261109-185621-1",
+      "epoca": "2",
+      "inicio": "180652333539388",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w3",
+      "particao": "referencia-kip848-20261109-185621-2",
+      "epoca": "2",
+      "inicio": "180652333539388",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-kip848-20261109-185621-3",
+      "epoca": "4",
+      "inicio": "180658361897978",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w1",
+      "particao": "referencia-kip848-20261109-185621-4",
+      "epoca": "4",
+      "inicio": "180658361897978",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-kip848-20261109-185621-5",
+      "epoca": "4",
+      "inicio": "180658355672596",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-kip848-20261109-185621-6",
+      "epoca": "4",
+      "inicio": "180658355672596",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "referencia-kip848-20261109-185621-7",
+      "epoca": "4",
+      "inicio": "180658355672596",
+      "fim": "180711153615486",
+      "fechamento": "janela"
+    }
+  ]
+}

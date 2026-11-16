@@ -1,0 +1,21 @@
+# D1. Medição de referência sem churn: três trabalhadores entram juntos e nada mais
+# acontece. Caracteriza o tempo órfão da entrada inicial e o ruído da máquina.
+nome = "referencia"
+descricao = "Sem churn. Três trabalhadores entram em t=0 e permanecem até o fim."
+particoes = 8
+duracao_s = 60
+
+[[eventos]]
+t = 0
+acao = "entrar"
+trabalhador = "w1"
+
+[[eventos]]
+t = 0
+acao = "entrar"
+trabalhador = "w2"
+
+[[eventos]]
+t = 0
+acao = "entrar"
+trabalhador = "w3"

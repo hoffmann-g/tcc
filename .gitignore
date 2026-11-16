@@ -1,0 +1,18 @@
+# Geradores e conversores da proposta, e seus intermediários
+proposta/fonte/
+proposta/proposta-entregue.docx
+proposta/proposta-texto.txt
+
+# Documentos da faculdade
+regulamento/
+
+# Primeira rodada de pilotos (artefato dos callbacks vazios, corrigido depois)
+experimento/execucoes/*-20261109-17*/
+
+# Dependências e artefatos de compilação
+experimento/coletor/lib/
+experimento/coletor/out/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

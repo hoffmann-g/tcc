@@ -1,0 +1,22 @@
+[project]
+name = "verificador"
+version = "0.1.0"
+description = "Exclusividade e tempo órfão sobre históricos de posse de partições"
+readme = "README.md"
+authors = [
+    { name = "Guilherme Hoffmann", email = "g.hoffmann.hbs@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+verificador = "verificador:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

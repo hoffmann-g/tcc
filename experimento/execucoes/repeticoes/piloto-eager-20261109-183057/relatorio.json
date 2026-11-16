@@ -1,0 +1,425 @@
+{
+  "janela": {
+    "inicio": 179126413092785,
+    "fim": 179216413242200
+  },
+  "margem": 37388,
+  "intervalos": 48,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": false,
+  "disponibilidade": true,
+  "sobreposicoes": [
+    {
+      "particao": "piloto-eager-20261109-183057-1",
+      "trabalhadores": [
+        "w2",
+        "w1"
+      ],
+      "epocas": [
+        3,
+        4
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179166636465783,
+      "fim": 179176522571395,
+      "duracao": 9886105612
+    },
+    {
+      "particao": "piloto-eager-20261109-183057-3",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        3,
+        4
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179166636836059,
+      "fim": 179176522571395,
+      "duracao": 9885735336
+    },
+    {
+      "particao": "piloto-eager-20261109-183057-5",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        3,
+        4
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179166636836059,
+      "fim": 179176522571395,
+      "duracao": 9885735336
+    }
+  ],
+  "tempo_orfao": {
+    "piloto-eager-20261109-183057-0": {
+      "total": 11534269965,
+      "fracao": 0.12815834240245855,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127592446527,
+          "duracao": 1179353742
+        },
+        {
+          "inicio": 179142597211185,
+          "fim": 179142609128772,
+          "duracao": 11917587
+        },
+        {
+          "inicio": 179166618981511,
+          "fim": 179166636465783,
+          "duracao": 17484272
+        },
+        {
+          "inicio": 179178637025779,
+          "fim": 179178648004885,
+          "duracao": 10979106
+        },
+        {
+          "inicio": 179193662993794,
+          "fim": 179193670294459,
+          "duracao": 7300665
+        },
+        {
+          "inicio": 179201413241240,
+          "fim": 179211720475833,
+          "duracao": 10307234593
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-1": {
+      "total": 11525736780,
+      "fracao": 0.1280635293931973,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127602355986,
+          "duracao": 1189263201
+        },
+        {
+          "inicio": 179142597535970,
+          "fim": 179142608495185,
+          "duracao": 10959215
+        },
+        {
+          "inicio": 179178637025779,
+          "fim": 179178648004885,
+          "duracao": 10979106
+        },
+        {
+          "inicio": 179193662993794,
+          "fim": 179193670294459,
+          "duracao": 7300665
+        },
+        {
+          "inicio": 179201413241240,
+          "fim": 179211720475833,
+          "duracao": 10307234593
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-2": {
+      "total": 11534269965,
+      "fracao": 0.12815834240245855,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127592446527,
+          "duracao": 1179353742
+        },
+        {
+          "inicio": 179142597211185,
+          "fim": 179142609128772,
+          "duracao": 11917587
+        },
+        {
+          "inicio": 179166618981511,
+          "fim": 179166636465783,
+          "duracao": 17484272
+        },
+        {
+          "inicio": 179178637025779,
+          "fim": 179178648004885,
+          "duracao": 10979106
+        },
+        {
+          "inicio": 179193662993794,
+          "fim": 179193670294459,
+          "duracao": 7300665
+        },
+        {
+          "inicio": 179201413241240,
+          "fim": 179211720475833,
+          "duracao": 10307234593
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-3": {
+      "total": 13757816792,
+      "fracao": 0.1528643772418786,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127602355986,
+          "duracao": 1189263201
+        },
+        {
+          "inicio": 179142597535970,
+          "fim": 179142608495185,
+          "duracao": 10959215
+        },
+        {
+          "inicio": 179178639737093,
+          "fim": 179178648340660,
+          "duracao": 8603567
+        },
+        {
+          "inicio": 179191428538243,
+          "fim": 179193670294459,
+          "duracao": 2241756216
+        },
+        {
+          "inicio": 179201413241240,
+          "fim": 179211720475833,
+          "duracao": 10307234593
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-4": {
+      "total": 1282582190,
+      "fracao": 0.014250889563370398,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127592446527,
+          "duracao": 1179353742
+        },
+        {
+          "inicio": 179142597211185,
+          "fim": 179142609128772,
+          "duracao": 11917587
+        },
+        {
+          "inicio": 179166618981511,
+          "fim": 179166636465783,
+          "duracao": 17484272
+        },
+        {
+          "inicio": 179178637025779,
+          "fim": 179178648487400,
+          "duracao": 11461621
+        },
+        {
+          "inicio": 179193651768981,
+          "fim": 179193671051343,
+          "duracao": 19282362
+        },
+        {
+          "inicio": 179211677393227,
+          "fim": 179211720475833,
+          "duracao": 43082606
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-5": {
+      "total": 3494421689,
+      "fracao": 0.038826843196524706,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127602355986,
+          "duracao": 1189263201
+        },
+        {
+          "inicio": 179142597535970,
+          "fim": 179142608495185,
+          "duracao": 10959215
+        },
+        {
+          "inicio": 179178639737093,
+          "fim": 179178648340660,
+          "duracao": 8603567
+        },
+        {
+          "inicio": 179191428538243,
+          "fim": 179193671051343,
+          "duracao": 2242513100
+        },
+        {
+          "inicio": 179211677393227,
+          "fim": 179211720475833,
+          "duracao": 43082606
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-6": {
+      "total": 3506218617,
+      "fracao": 0.03895791995669322,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127592446527,
+          "duracao": 1179353742
+        },
+        {
+          "inicio": 179142597211185,
+          "fim": 179142613923169,
+          "duracao": 16711984
+        },
+        {
+          "inicio": 179166620882441,
+          "fim": 179166636836059,
+          "duracao": 15953618
+        },
+        {
+          "inicio": 179178639737093,
+          "fim": 179178648340660,
+          "duracao": 8603567
+        },
+        {
+          "inicio": 179191428538243,
+          "fim": 179193671051343,
+          "duracao": 2242513100
+        },
+        {
+          "inicio": 179211677393227,
+          "fim": 179211720475833,
+          "duracao": 43082606
+        }
+      ]
+    },
+    "piloto-eager-20261109-183057-7": {
+      "total": 1292719293,
+      "fracao": 0.014363523854156481,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179126413092785,
+          "fim": 179127602355986,
+          "duracao": 1189263201
+        },
+        {
+          "inicio": 179142597535970,
+          "fim": 179142613923169,
+          "duracao": 16387199
+        },
+        {
+          "inicio": 179166620882441,
+          "fim": 179166636836059,
+          "duracao": 15953618
+        },
+        {
+          "inicio": 179178639737093,
+          "fim": 179178648487400,
+          "duracao": 8750307
+        },
+        {
+          "inicio": 179193651768981,
+          "fim": 179193671051343,
+          "duracao": 19282362
+        },
+        {
+          "inicio": 179211677393227,
+          "fim": 179211720475833,
+          "duracao": 43082606
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 45,
+    "total": 57928035291,
+    "minimo": 7300665,
+    "mediana": 17484272,
+    "p90": 2242513100,
+    "maximo": 10307234593
+  },
+  "abertos": [
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-0",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-1",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-2",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-3",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-4",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-5",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-6",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-eager-20261109-183057-7",
+      "epoca": "7",
+      "inicio": "179211720475833",
+      "fim": "179216413242200",
+      "fechamento": "janela"
+    }
+  ]
+}

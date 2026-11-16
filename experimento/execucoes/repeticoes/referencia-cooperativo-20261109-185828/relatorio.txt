@@ -1,0 +1,27 @@
+histórico: 13 intervalos, 8 partições, 3 trabalhadores
+janela: [180777615163158, 180837615472202) ns (60.000 s)
+margem: 20532 ns
+
+exclusividade: ok, nenhuma sobreposição acima da margem
+
+disponibilidade: ok, todas as partições cobertas no fim da janela
+tempo órfão por partição:
+  referencia-cooperativo-20261109-185828-0      1.174 s  ( 1.96%)  1 lacunas
+  referencia-cooperativo-20261109-185828-1      1.174 s  ( 1.96%)  1 lacunas
+  referencia-cooperativo-20261109-185828-2      1.174 s  ( 1.96%)  1 lacunas
+  referencia-cooperativo-20261109-185828-3      4.192 s  ( 6.99%)  2 lacunas
+  referencia-cooperativo-20261109-185828-4      4.193 s  ( 6.99%)  2 lacunas
+  referencia-cooperativo-20261109-185828-5      4.192 s  ( 6.99%)  2 lacunas
+  referencia-cooperativo-20261109-185828-6      4.193 s  ( 6.99%)  2 lacunas
+  referencia-cooperativo-20261109-185828-7      4.192 s  ( 6.99%)  2 lacunas
+  lacunas: 13, total 24.482 s, mediana 1.174 s, p90 3.019 s, máx 3.019 s
+
+intervalos abertos no fim da janela: 8
+  referencia-cooperativo-20261109-185828-0 w1 (e=1) desde 180778788691445
+  referencia-cooperativo-20261109-185828-1 w1 (e=1) desde 180778788691445
+  referencia-cooperativo-20261109-185828-2 w1 (e=1) desde 180778788691445
+  referencia-cooperativo-20261109-185828-3 w2 (e=3) desde 180784808944011
+  referencia-cooperativo-20261109-185828-4 w3 (e=3) desde 180784809701096
+  referencia-cooperativo-20261109-185828-5 w2 (e=3) desde 180784808944011
+  referencia-cooperativo-20261109-185828-6 w3 (e=3) desde 180784809701096
+  referencia-cooperativo-20261109-185828-7 w2 (e=3) desde 180784808944011

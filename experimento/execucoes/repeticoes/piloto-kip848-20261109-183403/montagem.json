@@ -1,0 +1,19 @@
+{
+  "intervalos": 26,
+  "anomalias": [],
+  "base_tempo": [
+    {
+      "trabalhador": "w1",
+      "desvio_ns": -14098
+    },
+    {
+      "trabalhador": "w2",
+      "desvio_ns": -25983
+    },
+    {
+      "trabalhador": "w3",
+      "desvio_ns": -43542
+    }
+  ],
+  "erro_base_tempo_ns": 43542
+}

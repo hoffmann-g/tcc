@@ -1,0 +1,30 @@
+histórico: 26 intervalos, 8 partições, 3 trabalhadores
+janela: [179219717633860, 179309717765358) ns (90.000 s)
+margem: 28679 ns
+
+exclusividade: VIOLADA, 3 sobreposições, maior 9.889 s
+  piloto-cooperativo-20261109-183230-4 w2 (e=3, perdida) × w1 (e=6, revogada)  [179259932105757, 179269821078185)  9.889 s
+  piloto-cooperativo-20261109-183230-5 w2 (e=3, perdida) × w3 (e=6, revogada)  [179259931923048, 179269821078185)  9.889 s
+  piloto-cooperativo-20261109-183230-6 w2 (e=3, perdida) × w3 (e=6, revogada)  [179259931923048, 179269821078185)  9.889 s
+
+disponibilidade: ok, todas as partições cobertas no fim da janela
+tempo órfão por partição:
+  piloto-cooperativo-20261109-183230-0     11.444 s  (12.72%)  2 lacunas
+  piloto-cooperativo-20261109-183230-1     11.444 s  (12.72%)  2 lacunas
+  piloto-cooperativo-20261109-183230-2     11.444 s  (12.72%)  2 lacunas
+  piloto-cooperativo-20261109-183230-3     16.696 s  (18.55%)  4 lacunas
+  piloto-cooperativo-20261109-183230-4      7.179 s  ( 7.98%)  3 lacunas
+  piloto-cooperativo-20261109-183230-5      6.423 s  ( 7.14%)  3 lacunas
+  piloto-cooperativo-20261109-183230-6      6.423 s  ( 7.14%)  3 lacunas
+  piloto-cooperativo-20261109-183230-7     10.204 s  (11.34%)  4 lacunas
+  lacunas: 23, total 81.256 s, mediana 2.992 s, p90 10.277 s, máx 10.277 s
+
+intervalos abertos no fim da janela: 8
+  piloto-cooperativo-20261109-183230-0 w2 (e=10) desde 179304995281839
+  piloto-cooperativo-20261109-183230-1 w2 (e=10) desde 179304995281839
+  piloto-cooperativo-20261109-183230-2 w2 (e=10) desde 179304995281839
+  piloto-cooperativo-20261109-183230-3 w2 (e=10) desde 179304995281839
+  piloto-cooperativo-20261109-183230-4 w2 (e=8) desde 179274947631920
+  piloto-cooperativo-20261109-183230-5 w2 (e=9) desde 179286962894399
+  piloto-cooperativo-20261109-183230-6 w2 (e=9) desde 179286962894399
+  piloto-cooperativo-20261109-183230-7 w2 (e=8) desde 179274947631920

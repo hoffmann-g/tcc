@@ -1,0 +1,42 @@
+# D2. Um traço com os quatro tipos de evento, para confirmar a cadeia de ponta a ponta.
+#
+# A suspensão de w2 por 20 s ultrapassa o tempo de sessão de 10 s. Sequência esperada:
+# o coordenador exclui w2 por volta de t=40, as partições de w2 passam a w1 e w3, w2 é
+# retomado em t=50, descobre a perda no primeiro poll() e fecha a posse como perdida.
+# A sobreposição entre a posse dos novos responsáveis e esse fechamento é a violação de
+# exclusividade que o experimento procura.
+nome = "piloto"
+descricao = "Entrada, suspensão acima do tempo de sessão, saída ordenada e morte."
+particoes = 8
+duracao_s = 90
+
+[[eventos]]
+t = 0
+acao = "entrar"
+trabalhador = "w1"
+
+[[eventos]]
+t = 0
+acao = "entrar"
+trabalhador = "w2"
+
+[[eventos]]
+t = 15
+acao = "entrar"
+trabalhador = "w3"
+
+[[eventos]]
+t = 30
+acao = "suspender"
+trabalhador = "w2"
+duracao = 20
+
+[[eventos]]
+t = 65
+acao = "sair"
+trabalhador = "w3"
+
+[[eventos]]
+t = 75
+acao = "matar"
+trabalhador = "w1"

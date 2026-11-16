@@ -1,0 +1,315 @@
+{
+  "janela": {
+    "inicio": 179779772346350,
+    "fim": 179869772473822
+  },
+  "margem": 17162,
+  "intervalos": 26,
+  "particoes": 8,
+  "trabalhadores": 3,
+  "exclusividade": false,
+  "disponibilidade": true,
+  "sobreposicoes": [
+    {
+      "particao": "piloto-cooperativo-20261109-184149-4",
+      "trabalhadores": [
+        "w2",
+        "w1"
+      ],
+      "epocas": [
+        3,
+        6
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179819934110037,
+      "fim": 179829895564867,
+      "duracao": 9961454830
+    },
+    {
+      "particao": "piloto-cooperativo-20261109-184149-5",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        3,
+        6
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179819936051405,
+      "fim": 179829895564867,
+      "duracao": 9959513462
+    },
+    {
+      "particao": "piloto-cooperativo-20261109-184149-6",
+      "trabalhadores": [
+        "w2",
+        "w3"
+      ],
+      "epocas": [
+        3,
+        6
+      ],
+      "fechamentos": [
+        "perdida",
+        "revogada"
+      ],
+      "inicio": 179819936051405,
+      "fim": 179829895564867,
+      "duracao": 9959513462
+    }
+  ],
+  "tempo_orfao": {
+    "piloto-cooperativo-20261109-184149-0": {
+      "total": 11355109496,
+      "fracao": 0.12616770459055957,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179854772566826,
+          "fim": 179865010877642,
+          "duracao": 10238310816
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-1": {
+      "total": 11355109496,
+      "fracao": 0.12616770459055957,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179854772566826,
+          "fim": 179865010877642,
+          "duracao": 10238310816
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-2": {
+      "total": 11355109496,
+      "fracao": 0.12616770459055957,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179854772566826,
+          "fim": 179865010877642,
+          "duracao": 10238310816
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-3": {
+      "total": 16555428769,
+      "fracao": 0.18394894800733,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179795900328368,
+          "fim": 179798918873880,
+          "duracao": 3018545512
+        },
+        {
+          "inicio": 179844784620549,
+          "fim": 179846966394310,
+          "duracao": 2181773761
+        },
+        {
+          "inicio": 179854772566826,
+          "fim": 179865010877642,
+          "duracao": 10238310816
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-4": {
+      "total": 7138147799,
+      "fracao": 0.07931264098732253,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179783878361288,
+          "fim": 179786892246354,
+          "duracao": 3013885066
+        },
+        {
+          "inicio": 179831950450467,
+          "fim": 179834957914520,
+          "duracao": 3007464053
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-5": {
+      "total": 6312552312,
+      "fracao": 0.07013937079104585,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179783878361288,
+          "fim": 179786892246354,
+          "duracao": 3013885066
+        },
+        {
+          "inicio": 179844784620549,
+          "fim": 179846966489115,
+          "duracao": 2181868566
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-6": {
+      "total": 6312552312,
+      "fracao": 0.07013937079104585,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179783878361288,
+          "fim": 179786892246354,
+          "duracao": 3013885066
+        },
+        {
+          "inicio": 179844784620549,
+          "fim": 179846966489115,
+          "duracao": 2181868566
+        }
+      ]
+    },
+    "piloto-cooperativo-20261109-184149-7": {
+      "total": 10155106348,
+      "fracao": 0.11283435516421199,
+      "coberta_no_fim": true,
+      "lacunas": [
+        {
+          "inicio": 179779772346350,
+          "fim": 179780889145030,
+          "duracao": 1116798680
+        },
+        {
+          "inicio": 179783878361288,
+          "fim": 179786892246354,
+          "duracao": 3013885066
+        },
+        {
+          "inicio": 179795899945448,
+          "fim": 179798918873880,
+          "duracao": 3018928432
+        },
+        {
+          "inicio": 179831952420350,
+          "fim": 179834957914520,
+          "duracao": 3005494170
+        }
+      ]
+    }
+  },
+  "lacunas": {
+    "quantidade": 23,
+    "total": 80539116028,
+    "minimo": 1116798680,
+    "mediana": 3005494170,
+    "p90": 10238310816,
+    "maximo": 10238310816
+  },
+  "abertos": [
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-0",
+      "epoca": "10",
+      "inicio": "179865010877642",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-1",
+      "epoca": "10",
+      "inicio": "179865010877642",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-2",
+      "epoca": "10",
+      "inicio": "179865010877642",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-3",
+      "epoca": "10",
+      "inicio": "179865010877642",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-4",
+      "epoca": "8",
+      "inicio": "179834957914520",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-5",
+      "epoca": "9",
+      "inicio": "179846966489115",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-6",
+      "epoca": "9",
+      "inicio": "179846966489115",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    },
+    {
+      "trabalhador": "w2",
+      "particao": "piloto-cooperativo-20261109-184149-7",
+      "epoca": "8",
+      "inicio": "179834957914520",
+      "fim": "179869772473822",
+      "fechamento": "janela"
+    }
+  ]
+}

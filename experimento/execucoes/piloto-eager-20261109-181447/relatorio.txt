@@ -1,0 +1,30 @@
+histórico: 48 intervalos, 8 partições, 3 trabalhadores
+janela: [178156331557463, 178246331749335) ns (90.000 s)
+margem: 23776 ns
+
+exclusividade: VIOLADA, 3 sobreposições, maior 9.787 s
+  piloto-eager-20261109-181447-1 w2 (e=3, perdida) × w1 (e=4, revogada)  [178196676222235, 178206462771711)  9.787 s
+  piloto-eager-20261109-181447-3 w2 (e=3, perdida) × w3 (e=4, revogada)  [178196676307354, 178206462771711)  9.786 s
+  piloto-eager-20261109-181447-5 w2 (e=3, perdida) × w3 (e=4, revogada)  [178196676307354, 178206462771711)  9.786 s
+
+disponibilidade: ok, todas as partições cobertas no fim da janela
+tempo órfão por partição:
+  piloto-eager-20261109-181447-0     11.787 s  (13.10%)  6 lacunas
+  piloto-eager-20261109-181447-1     11.787 s  (13.10%)  5 lacunas
+  piloto-eager-20261109-181447-2     11.787 s  (13.10%)  6 lacunas
+  piloto-eager-20261109-181447-3     14.136 s  (15.71%)  5 lacunas
+  piloto-eager-20261109-181447-4      1.402 s  ( 1.56%)  6 lacunas
+  piloto-eager-20261109-181447-5      3.751 s  ( 4.17%)  5 lacunas
+  piloto-eager-20261109-181447-6      3.765 s  ( 4.18%)  6 lacunas
+  piloto-eager-20261109-181447-7      1.423 s  ( 1.58%)  6 lacunas
+  lacunas: 45, total 59.837 s, mediana 0.027 s, p90 2.364 s, máx 10.429 s
+
+intervalos abertos no fim da janela: 8
+  piloto-eager-20261109-181447-0 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-1 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-2 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-3 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-4 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-5 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-6 w2 (e=7) desde 178241761284801
+  piloto-eager-20261109-181447-7 w2 (e=7) desde 178241761284801

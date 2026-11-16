@@ -1,0 +1,25 @@
+{
+  "nome": "referencia",
+  "descricao": "Sem churn. Três trabalhadores entram em t=0 e permanecem até o fim.",
+  "protocolo": "eager",
+  "topico": "referencia-eager-20261109-193258",
+  "grupo": "referencia-eager-20261109-193258",
+  "particoes": 8,
+  "duracao_s": 60.0,
+  "t0_mono_ns": 180903737167915,
+  "t1_mono_ns": 180963737287389,
+  "t0_relogio_ns": 1794263580967566203,
+  "sessao_ms": 10000,
+  "heartbeat_ms": 3000,
+  "poll_ms": 500,
+  "trabalho_ms": 0,
+  "sessao_definida_em": "cliente",
+  "broker": "apache/kafka:4.3.2",
+  "kafka_clients": "4.3.2",
+  "java": "openjdk version \"26.0.2\" 2026-07-21",
+  "trabalhadores": [
+    "w1",
+    "w2",
+    "w3"
+  ]
+}

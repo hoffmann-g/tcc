@@ -1,0 +1,179 @@
+19:33:01.232 [main] INFO org.apache.kafka.common.config.AbstractConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = w2
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = referencia-eager-20261109-193258
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [org.apache.kafka.clients.consumer.StickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+19:33:01.342 [main] INFO org.apache.kafka.common.telemetry.internals.KafkaMetricsCollector - initializing Kafka metrics collector
+19:33:01.716 [main] INFO org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] 
+****************************************************************
+* The consumer rebalance protocol (KIP-848) is production-ready!
+* Set the consumer configuration group.protocol=consumer to try it out.
+* See https://kafka.apache.org/documentation/#consumer_rebalance_protocol
+****************************************************************
+19:33:01.753 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka version: 4.3.2
+19:33:01.753 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka commitId: 0a6c96d3b61167f1
+19:33:01.754 [main] INFO org.apache.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1794263581749
+19:33:01.764 [main] INFO org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Subscribed to topic(s): referencia-eager-20261109-193258
+19:33:02.160 [main] INFO org.apache.kafka.clients.Metadata - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Cluster ID: 5L6g3nShT-eMCtK--X86sw
+19:33:02.165 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+19:33:02.176 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] (Re-)joining group
+19:33:02.198 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Request joining group due to: need to re-join with the given member-id: w2-35c8f1b7-24fa-449c-b399-699308a00514
+19:33:02.198 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] (Re-)joining group
+19:33:02.204 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Successfully joined group with generation Generation{generationId=1, memberId='w2-35c8f1b7-24fa-449c-b399-699308a00514', protocol='sticky'}
+19:33:02.218 [main] INFO org.apache.kafka.clients.consumer.internals.AbstractStickyAssignor - Final assignment of partitions to consumers: 
+{w2-35c8f1b7-24fa-449c-b399-699308a00514=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2, referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-6, referencia-eager-20261109-193258-7]}
+19:33:02.219 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Finished assignment for group at generation 1: {w2-35c8f1b7-24fa-449c-b399-699308a00514=Assignment(partitions=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2, referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-6, referencia-eager-20261109-193258-7])}
+19:33:02.225 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Successfully synced group in generation Generation{generationId=1, memberId='w2-35c8f1b7-24fa-449c-b399-699308a00514', protocol='sticky'}
+19:33:02.227 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Notifying assignor about the new Assignment(partitions=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2, referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-6, referencia-eager-20261109-193258-7])
+19:33:02.229 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Adding newly assigned partitions: [referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2, referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-6, referencia-eager-20261109-193258-7]
+19:33:02.246 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-6
+19:33:02.246 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-7
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-2
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-3
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-4
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-5
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-0
+19:33:02.247 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Found no committed offset for partition referencia-eager-20261109-193258-1
+19:33:02.274 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-6 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.275 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-7 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.275 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-2 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.275 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-3 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.276 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-4 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.276 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-5 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.276 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:02.276 [main] INFO org.apache.kafka.clients.consumer.internals.SubscriptionState - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting offset for partition referencia-eager-20261109-193258-1 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}.
+19:33:05.206 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Request joining group due to: group is already rebalancing
+19:33:05.212 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Revoke previously assigned partitions [referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2, referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-6, referencia-eager-20261109-193258-7]
+19:33:05.213 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] (Re-)joining group
+19:33:05.226 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Successfully joined group with generation Generation{generationId=2, memberId='w2-35c8f1b7-24fa-449c-b399-699308a00514', protocol='sticky'}
+19:33:05.228 [main] INFO org.apache.kafka.clients.consumer.internals.AbstractStickyAssignor - Final assignment of partitions to consumers: 
+{w3-5ae7b548-77fd-4a56-bf4a-fdd407b37246=[referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-6], w2-35c8f1b7-24fa-449c-b399-699308a00514=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2], w1-a7c6d117-1f7c-41d7-8466-ae086a660acf=[referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-7]}
+19:33:05.229 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Finished assignment for group at generation 2: {w3-5ae7b548-77fd-4a56-bf4a-fdd407b37246=Assignment(partitions=[referencia-eager-20261109-193258-4, referencia-eager-20261109-193258-6]), w2-35c8f1b7-24fa-449c-b399-699308a00514=Assignment(partitions=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2]), w1-a7c6d117-1f7c-41d7-8466-ae086a660acf=Assignment(partitions=[referencia-eager-20261109-193258-3, referencia-eager-20261109-193258-5, referencia-eager-20261109-193258-7])}
+19:33:05.232 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Successfully synced group in generation Generation{generationId=2, memberId='w2-35c8f1b7-24fa-449c-b399-699308a00514', protocol='sticky'}
+19:33:05.233 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Notifying assignor about the new Assignment(partitions=[referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2])
+19:33:05.233 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Adding newly assigned partitions: [referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2]
+19:33:05.237 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition referencia-eager-20261109-193258-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+19:33:05.238 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition referencia-eager-20261109-193258-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+19:33:05.238 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerUtils - Setting offset for partition referencia-eager-20261109-193258-1 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+19:34:00.976 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerRebalanceListenerInvoker - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Revoke previously assigned partitions [referencia-eager-20261109-193258-0, referencia-eager-20261109-193258-1, referencia-eager-20261109-193258-2]
+19:34:00.976 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Member w2-35c8f1b7-24fa-449c-b399-699308a00514 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false) due to the consumer is being closed
+19:34:00.978 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Resetting generation and member id due to: consumer pro-actively leaving the group
+19:34:00.978 [main] INFO org.apache.kafka.clients.consumer.internals.ConsumerCoordinator - [Consumer clientId=w2, groupId=referencia-eager-20261109-193258] Request joining group due to: consumer pro-actively leaving the group
+19:34:01.198 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics scheduler closed
+19:34:01.198 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+19:34:01.198 [main] INFO org.apache.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+19:34:01.198 [main] INFO org.apache.kafka.common.metrics.Metrics - Metrics reporters closed
+19:34:01.210 [main] INFO org.apache.kafka.common.utils.AppInfoParser - App info kafka.consumer for w2 unregistered
