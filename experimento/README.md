@@ -11,7 +11,9 @@ coletor/        consumidor Java instrumentado; única peça que conhece o Kafka
 orquestrador/   aplica o traço, registra os instantes, monta o histórico, chama o verificador
 verificador/    exclusividade e tempo órfão sobre o histórico; não depende do Kafka
 tracos/         traços de churn em TOML
-execucoes/      uma pasta por execução, criada pelo orquestrador
+execucoes/      uma pasta por execução, criada pelo orquestrador:
+                rodada-unica/ (uma por protocolo) e repeticoes/ (cinco do piloto e três
+                da referência por protocolo), cada uma com sua comparacao.csv
 ```
 
 ## Fluxo

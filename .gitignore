@@ -1,13 +1,6 @@
-# Geradores e conversores da proposta, e seus intermediários
-proposta/fonte/
-proposta/proposta-entregue.docx
-proposta/proposta-texto.txt
-
-# Documentos da faculdade
+# Documentos da faculdade e arquivos da proposta fora do PDF entregue
 regulamento/
-
-# Primeira rodada de pilotos (artefato dos callbacks vazios, corrigido depois)
-experimento/execucoes/*-20261109-17*/
+proposta/proposta-entregue.docx
 
 # Dependências e artefatos de compilação
 experimento/coletor/lib/

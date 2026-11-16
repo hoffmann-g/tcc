@@ -3,9 +3,9 @@
 Execuções em `experimento/execucoes/repeticoes/`: cinco do traço piloto e três do traço
 de referência por protocolo, 24 no total, zero anomalias de montagem. Tabelas geradas
 por `orquestrador comparar --agregar` (mediana [mínimo; máximo] entre execuções) e
-gravadas em `execucoes/repeticoes/comparacao.csv`. As execuções em `execucoes/*-17*` e
-`*-18*` são as rodadas anteriores de uma execução por protocolo; a primeira tinha o
-artefato dos callbacks de coleção vazia, corrigido antes das repetições.
+gravadas em `execucoes/repeticoes/comparacao.csv`. As execuções em
+`execucoes/rodada-unica/` são a rodada anterior, de uma execução por protocolo, feita
+logo após a correção dos callbacks de coleção vazia.
 
 Condições: broker `apache/kafka:4.3.2`, um nó; sessão de 10 s e sinal de vida de 3 s nos
 três protocolos; 8 partições; sem produtor, então os consumidores não processam
@@ -116,7 +116,7 @@ desvio de cada execução foi usado como margem do verificador.
 ## Figuras
 
 `volume-1/figuras/linha-do-tempo-piloto.png`: histórico de posse das oito partições na
-rodada única de 09/11 (`execucoes/piloto-*-20261109-18*`), um painel por protocolo.
+rodada única de 09/11 (`execucoes/rodada-unica/`), um painel por protocolo.
 `volume-1/figuras/lacunas-piloto.png`: duração de cada lacuna de cobertura nas quinze
 execuções do piloto, por protocolo, em escala logarítmica.
 
