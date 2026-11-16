@@ -1,62 +1,85 @@
-# TCC — Rebalanceamento de grupos de consumidores no Apache Kafka
+# Corretude e disponibilidade no rebalanceamento de grupos de consumidores do Apache Kafka
 
-Guilherme Hoffmann. Orientador: Fernando Luis Dotti. TCC I em 2026/2.
+Trabalho de Conclusão de Curso, Ciência da Computação, PUCRS, 2026/2.
+Guilherme Hoffmann Batistti dos Santos. Orientador: Prof. Dr. Fernando Luís Dotti.
 
-Formalizar a atribuição de partições a consumidores como comunicação em grupo com
-sincronia de visão, e comparar empiricamente os três protocolos de rebalanceamento do
-Apache Kafka — eager, cooperativo (KIP-429) e KIP-848 — medindo tempo órfão por partição
-e sobreposição de posse.
+## Problema
 
-## Estado em 09/11/2026
+O Apache Kafka divide cada tópico em partições e as distribui entre os consumidores de um
+grupo, de modo que cada partição tenha um único responsável. Quando um consumidor entra
+ou sai, o grupo faz um rebalanceamento. Três protocolos de rebalanceamento coexistem no
+mesmo broker: eager, cooperativo (KIP-429) e KIP-848.
 
-A proposta foi entregue na semana 5 e devolvida com anotações do orientador em 13/10. O
-volume final de TCC I vence em 30/11, fim da semana 16.
+A métrica usada para compará-los, tempo de rebalanceamento, não designa a mesma grandeza
+nos três: no eager é uma pausa global do grupo, no cooperativo pode abranger várias
+rodadas, e no KIP-848 não existe um evento global a cronometrar. Ela também nada diz sobre
+corretude. O Kafka protege a confirmação da posição de leitura com épocas, mas não impede
+que um consumidor excluído do grupo, sem saber que foi excluído, continue processando
+registros de uma partição que já pertence a outro.
 
-Feito até 09/11: proposta entregue; triagem dos comentários do orientador; formalização
-do modelo com as quatro questões em aberto respondidas e verificadas no código do cliente
-Java; ambiente, coletor, orquestrador e verificador implementados e testados; traços de
-referência e piloto executados nos três protocolos, com a cadeia funcionando de ponta a
-ponta e a sobreposição de posse após suspensão observada nos três; referências pendentes
-reunidas; rascunho completo do volume em `volume-1/volume.md`, com todas as seções
-redigidas e as pendências marcadas entre colchetes; cinco repetições do piloto e três da
-referência por protocolo, sem anomalias; as duas figuras do volume geradas. Resultado
-central em `notas/resultados-piloto.md`: a sobreposição de posse é igual nos três
-protocolos e fixada pelo tempo de sessão; o tempo órfão é maior nos incrementais, porque
-cada transferência custa um ciclo de sinal de vida.
+## Abordagem
 
-Não feito: validação da formalização com o orientador; revisão do rascunho pelo autor;
-transposição para o modelo da disciplina e PDF; busca sistemática em ACM DL e IEEE Xplore
-para a seção de trabalhos relacionados.
+O problema é descrito como comunicação em grupo com sincronia de visão, sem referência ao
+Kafka. Sobre essa descrição são definidas duas grandezas que valem igualmente para os
+três protocolos, calculadas a partir de um histórico de intervalos de posse
+`(trabalhador, partição, época, início, fim)`:
 
-Avaliador: prof. Michael da Costa Mora.
+- **sobreposição de posse**: o tempo em que dois trabalhadores distintos se consideram
+  responsáveis pela mesma partição, que é uma violação de exclusividade;
+- **tempo órfão**: o tempo em que uma partição fica sem nenhum responsável.
 
-## Organização
+Um consumidor Java instrumentado registra os callbacks de `ConsumerRebalanceListener`, um
+orquestrador aplica ao grupo uma sequência temporizada de entradas, saídas, mortes e
+suspensões de consumidores, e um verificador independente do Kafka calcula as duas
+grandezas sobre o histórico resultante.
+
+O modelo, as definições e a verificação delas no código do cliente Java estão em
+[notas/formalizacao.md](notas/formalizacao.md).
+
+## Resultados preliminares
+
+Broker Kafka 4.3.2, oito partições, sessão de 10 s, sinal de vida de 3 s, sem carga de
+processamento. O traço piloto suspende um consumidor por 20 s, acima do tempo de sessão.
+Cinco execuções por protocolo; mediana e, entre colchetes, mínimo e máximo.
+
+| Protocolo | Sobreposições por execução | Maior sobreposição (s) | Tempo órfão total (s) |
+|---|---|---|---|
+| eager | 3 em todas | 9,78 [9,35; 9,89] | 59,4 [57,9; 66,1] |
+| cooperativo | 3 em todas | 9,91 [9,89; 9,96] | 80,5 [68,5; 81,3] |
+| KIP-848 | 3 em todas | 10,26 [9,97; 10,37] | 77,9 [65,8; 83,0] |
+
+- Os três protocolos violam a exclusividade de posse sob suspensão, com a mesma grandeza.
+  O consumidor suspenso é excluído quando a sessão expira, suas partições passam a outros,
+  e ele só descobre a perda no primeiro `poll()` depois de retomado. A duração da
+  violação é fixada pelo tempo de sessão, não pelo protocolo.
+- O tempo órfão foi maior nos protocolos incrementais. Sem carga, a barreira do eager
+  custa dezenas de milissegundos, enquanto cada transferência incremental espera um ciclo
+  de sinal de vida. A hipótese de que reduzir a sincronização global reduz o tempo órfão
+  não se confirmou nestas condições; carga e intervalo do sinal de vida são as variáveis
+  da próxima etapa.
+
+![Histórico de posse das oito partições em uma execução de cada protocolo](volume-1/figuras/linha-do-tempo-piloto.png)
+
+Detalhes, limitações e a tabela completa em
+[notas/resultados-piloto.md](notas/resultados-piloto.md).
+
+## Conteúdo
 
 ```
-proposta/      a entrega da semana 5 e a devolução comentada
-notas/         formalização do modelo e resultados do piloto
-experimento/   ambiente (broker), coletor (Java), orquestrador e verificador (Python), traços, execuções
-volume-1/      volume final de TCC I: volume.md (rascunho) e referencias.bib
+notas/          formalização do modelo e resultados do piloto
+experimento/    broker, coletor, orquestrador, verificador, traços e execuções gravadas
+volume-1/       referências e figuras do volume de TCC I
+proposta/       proposta entregue e devolução comentada pelo orientador
 ```
 
-### notas/
+Para reproduzir os experimentos ou reprocessar as execuções gravadas, ver
+[experimento/README.md](experimento/README.md). Requer Docker, Java 17 ou superior e
+[uv](https://docs.astral.sh/uv/).
 
-| Arquivo | Conteúdo |
-|---|---|
-| [formalizacao.md](notas/formalizacao.md) | Modelo de visões, posse, exclusividade e disponibilidade, sua instanciação no Kafka e a verificação das definições no código do cliente Java |
-| [resultados-piloto.md](notas/resultados-piloto.md) | Resultados dos pilotos de 09/11, com tabela agregada e leitura contra a hipótese |
+## Situação
 
-### proposta/
-
-| Arquivo | Conteúdo |
-|---|---|
-| `proposta-entregue.pdf` | A versão entregue, 14 páginas. É a referência do que foi submetido |
-| `proposta-comentada.pdf` | A devolução do orientador, 16 páginas, com as anotações |
-
-## Vocabulário
-
-Fechado em [notas/formalizacao.md](notas/formalizacao.md) e de uso obrigatório em todo o
-texto, porque a maior parte dos comentários do orientador decorre de ele não estar fechado:
-partição, trabalhador, membro, consumidor, operar, posse, exclusividade, barreira,
-rebalanceamento. Trabalhador é o termo do modelo; consumidor, só quando se fala do Kafka;
-membro, só quando se fala da composição do grupo. Rebalanceamento substitui transição.
+TCC I, em andamento: formalização, ambiente experimental, verificador e pilotos
+concluídos; volume em redação, com entrega em 30/11/2026. TCC II, em 2027/1: campanha
+experimental com carga de processamento e variação do sinal de vida, separação entre
+protocolo e estratégia de atribuição, caracterização de pior caso e verificação formal do
+modelo.
