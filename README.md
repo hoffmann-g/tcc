@@ -70,7 +70,13 @@ notas/          formalização do modelo e resultados do piloto
 experimento/    broker, coletor, orquestrador, verificador, traços e execuções gravadas
 volume-1/       referências e figuras do volume de TCC I
 proposta/       proposta entregue e devolução comentada pelo orientador
+explicacao/     página interativa com animações do modelo, dos protocolos e do verificador
 ```
+
+A página em [explicacao/posse-de-particoes.html](explicacao/posse-de-particoes.html)
+mostra, passo a passo, a posse de partições sob suspensão de um consumidor, o mesmo
+rebalanceamento nos três protocolos e a varredura do verificador. Basta abrir o arquivo no
+navegador.
 
 Para reproduzir os experimentos ou reprocessar as execuções gravadas, ver
 [experimento/README.md](experimento/README.md). Requer Docker, Java 17 ou superior e

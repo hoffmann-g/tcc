@@ -1,0 +1,1001 @@
+<title>Posse de partições no Kafka</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: coluna única de leitura; cada simulação é um diagrama de tempo (o vernáculo de
+   sistemas distribuídos), com a narração ao lado ou abaixo. Cores dos trabalhadores fixas
+   em toda a página: w1 azul, w2 laranja, w3 verde; vermelho só para violação. */
+:root{
+  --bg:#f5f6f7; --surface:#ffffff; --ink:#14171b; --ink-2:#4b525b; --muted:#686e76;
+  --rule:#dde0e4; --accent:#5a48cf; --accent-soft:#ece9fb; --on-accent:#ffffff;
+  --w1:#2a78d6; --w2:#eb6834; --w3:#1baf7a; --viol:#d03b3b; --viol-soft:rgba(208,59,59,.16);
+  --orphan-bg:#eceef1; --orphan-line:#b4bac2; --frozen:#c9d6ea;
+  --display:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111316; --surface:#191c20; --ink:#eceef0; --ink-2:#b4b9c0; --muted:#7f858d;
+  --rule:#2b2f35; --accent:#9a8ef0; --accent-soft:#25213d; --on-accent:#14171b;
+  --w1:#3987e5; --w2:#d95926; --w3:#199e70; --viol:#e35d5d; --viol-soft:rgba(227,93,93,.2);
+  --orphan-bg:#1e2227; --orphan-line:#454b53; --frozen:#22324a; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111316; --surface:#191c20; --ink:#eceef0; --ink-2:#b4b9c0; --muted:#7f858d;
+  --rule:#2b2f35; --accent:#9a8ef0; --accent-soft:#25213d; --on-accent:#14171b;
+  --w1:#3987e5; --w2:#d95926; --w3:#199e70; --viol:#e35d5d; --viol-soft:rgba(227,93,93,.2);
+  --orphan-bg:#1e2227; --orphan-line:#454b53; --frozen:#22324a; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+header{padding-block:48px 28px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:14px;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.25;text-wrap:balance;margin:0}
+h1{font-size:clamp(24px,3.4vw,30px);margin-top:8px}
+h2{font-size:21px}
+h2 .num{color:var(--muted);font-weight:500;margin-right:.4em}
+h3{font-size:17px;font-weight:600}
+.lead{font-size:16px;color:var(--ink-2);max-width:66ch;margin-top:14px}
+section{padding-block:40px 8px;display:grid;gap:16px}
+section > p, .prose{max-width:66ch;margin:0;color:var(--ink-2)}
+.prose p{margin:0 0 12px}
+strong{color:var(--ink);font-weight:600}
+code,.mono{font-family:var(--mono);font-size:.88em}
+
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px;display:grid;gap:14px;min-width:0}
+.scroll{overflow-x:auto;min-width:0}
+.scroll svg{display:block;width:100%;min-width:660px;height:auto}
+svg text{font-family:var(--body);fill:var(--ink-2);font-size:12px}
+svg .lbl-strong{fill:var(--ink);font-weight:600}
+svg .lbl-small{font-size:10.5px;fill:var(--muted)}
+svg .lbl-mono{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+svg .lbl-viol{fill:var(--viol);font-weight:600;font-size:11px}
+svg .axis{stroke:var(--rule)}
+svg .grid{stroke:var(--rule);stroke-dasharray:2 3}
+svg .mark{stroke:var(--muted);stroke-dasharray:3 3}
+svg .playhead{stroke:var(--accent);stroke-width:1.5}
+svg .bar-w1{fill:var(--w1)} svg .bar-w2{fill:var(--w2)} svg .bar-w3{fill:var(--w3)}
+svg .tick-w1{stroke:var(--w1)} svg .tick-w2{stroke:var(--w2)} svg .tick-w3{stroke:var(--w3)}
+svg .tick-rej{stroke:var(--viol)}
+svg .orphan{fill:url(#hatch)}
+svg .frozen{fill:var(--frozen)}
+svg .ovl{fill:var(--viol-soft)}
+svg .ovl-line{fill:var(--viol)}
+svg .epoch{fill:none;stroke:var(--muted)}
+svg .stepdot{fill:var(--surface);stroke:var(--muted)}
+svg .stepdot.on{fill:var(--accent);stroke:var(--accent)}
+svg .stepnum{font-family:var(--mono);font-size:10.5px;fill:var(--ink-2)}
+svg .stepnum.on{fill:var(--on-accent)}
+svg .bracket{stroke:var(--ink-2);fill:none}
+svg .rowbg{fill:var(--bg)}
+svg .lane{fill:none;stroke:var(--orphan-line);stroke-width:1;stroke-dasharray:3 3}
+.hatch-bg{fill:var(--orphan-bg)} .hatch-line{stroke:var(--orphan-line);stroke-width:2}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--rule);background:var(--surface);color:var(--ink);
+  border-radius:7px;padding:9px 16px;cursor:pointer}
+button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:hover{border-color:var(--ink-2)}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=range]{accent-color:var(--accent);flex:1;min-width:140px}
+.clock{font-family:var(--mono);font-size:13px;color:var(--ink-2);min-width:76px;font-variant-numeric:tabular-nums}
+
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:14px;height:10px;border-radius:2px;display:inline-block}
+.sw.w1{background:var(--w1)} .sw.w2{background:var(--w2)} .sw.w3{background:var(--w3)}
+.sw.viol{background:var(--viol)} .sw.thin{height:3px;background:var(--ink-2)}
+.sw.orphan{background:repeating-linear-gradient(45deg,var(--orphan-line) 0 2px,var(--orphan-bg) 2px 5px)}
+.sw.frozen{background:var(--frozen)}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:4px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 64px 1fr;gap:8px;align-items:baseline;
+  padding:10px 12px;border-radius:7px;cursor:pointer;color:var(--ink-2);font-size:15px;line-height:1.5}
+.steps li::before{content:counter(s);font-family:var(--mono);font-size:12px;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--muted);display:grid;place-items:center;align-self:start}
+.steps li .t{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.steps li.on{background:var(--accent-soft);color:var(--ink)}
+.steps li.on::before{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.steps li.future{opacity:.45}
+
+.defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.def{border-top:2px solid var(--ink);padding-top:10px}
+.def dt{font-family:var(--display);font-weight:600;font-size:18px}
+.def dd{margin:4px 0 0;color:var(--ink-2);font-size:15px}
+.def .f{font-family:var(--mono);font-size:13px;color:var(--accent);display:block;margin-top:6px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px}
+.flow .n{border:1px solid var(--rule);background:var(--surface);border-radius:7px;padding:8px 12px;display:grid;line-height:1.3}
+.flow .n b{font-weight:600}
+.flow .n small{color:var(--muted);font-size:12px}
+.flow .n.k{border-color:var(--ink-2)}
+.flow .arr{color:var(--muted);font-family:var(--mono)}
+
+.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px}
+.slider label{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2);gap:10px}
+.slider label b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.slider input{width:100%}
+.slider small{display:block;color:var(--muted);font-size:12.5px;line-height:1.45}
+
+.proto{display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--rule)}
+.proto-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.proto-head .m{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.proto ol{margin:0;padding-left:20px;color:var(--ink-2);font-size:14px;display:grid;gap:2px}
+.proto ol .t{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+.bars{display:grid;gap:8px}
+.bars .r{display:grid;grid-template-columns:110px 1fr 72px;gap:10px;align-items:center;font-size:14px}
+.bars .track{background:var(--bg);border-radius:4px;height:14px;overflow:hidden}
+.bars .fill{height:100%;background:var(--ink-2);border-radius:4px;transition:width .3s}
+.bars .v{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+
+.split{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(280px,1fr);gap:20px;align-items:start}
+.wide{--w:min(1280px,calc(100vw - 48px));width:var(--w);margin-left:calc((100% - var(--w)) / 2)}
+body{overflow-x:clip}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule)}
+th{font-weight:600;color:var(--ink-2);font-size:12.5px}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.mono{font-family:var(--mono);font-size:12.5px}
+tr.on td{background:var(--accent-soft);color:var(--ink)}
+.counters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.counter{border:1px solid var(--rule);border-radius:7px;padding:10px 14px;display:grid;gap:2px}
+.counter .p{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.counter .v{font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums}
+.counter .v .viol{color:var(--viol);font-weight:500}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{font-size:13.5px;color:var(--muted);max-width:70ch;margin:0}
+
+.ae{display:grid;gap:0}
+.ae .row{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding-block:14px;border-top:1px solid var(--rule)}
+.ae .k{font-family:var(--display);font-size:28px;font-weight:600;color:var(--accent);line-height:1}
+.ae h3{font-size:18px}
+.ae p{margin:4px 0 0;color:var(--ink-2);font-size:15px}
+.ae .art{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.bars .fill{transition:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <rect width="6" height="6" class="hatch-bg"></rect>
+      <line x1="0" y1="0" x2="0" y2="6" class="hatch-line"></line>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Trabalho de Conclusão I · Ciência da Computação · PUCRS · 2026/2</div>
+  <h1>Posse de partições no rebalanceamento de grupos de consumidores do Apache Kafka</h1>
+  <p class="lead">Guia visual do trabalho: o problema da posse de partições, a formalização
+  que o mede da mesma forma nos três protocolos de rebalanceamento, e o que o experimento
+  mostrou. Os diagramas são animados: o botão Reproduzir avança um passo por vez, e a lista
+  ao lado de cada diagrama descreve o que acontece em cada instante.</p>
+</header>
+
+<!-- 1 -->
+<section id="vocabulario">
+  <h2><span class="num">1</span>O modelo: atribuição e posse</h2>
+  <p>Um tópico do Kafka é dividido em partições fixas, e cada partição deve ter um único
+  responsável por vez. Quem decide quem é responsável é o coordenador do grupo. Mas cada
+  trabalhador só sabe da decisão quando ela chega até ele, e só para de operar quando
+  descobre que perdeu a partição. A formalização separa essas duas coisas, e o trabalho
+  inteiro mede a diferença entre elas.</p>
+  <dl class="defs">
+    <div class="def"><dt>Visão</dt><dd>Um instantâneo do grupo: a época, os membros vivos e a atribuição de partições a membros.</dd><span class="f">v = (e, M, a)</span></div>
+    <div class="def"><dt>Atribuição</dt><dd>A decisão do coordenador para cada partição. É global e muda de uma vez, a cada nova época.</dd><span class="f">a : partição → membro</span></div>
+    <div class="def"><dt>Intervalo de posse</dt><dd>O período em que um trabalhador se considerou dono de uma partição, do callback de atribuição ao de revogação ou perda.</dd><span class="f">(w, r, e, início, fim)</span></div>
+    <div class="def"><dt>Exclusividade</dt><dd>Dois trabalhadores nunca têm posse da mesma partição ao mesmo tempo. A violação é uma sobreposição, com duração.</dd><span class="f">sobreposição em segundos</span></div>
+    <div class="def"><dt>Disponibilidade</dt><dd>Toda partição volta a ter dono. O tempo sem nenhum dono é o tempo órfão, medido por partição.</dd><span class="f">tempo órfão em segundos</span></div>
+    <div class="def"><dt>Histórico</dt><dd>A lista de intervalos de posse de uma execução. É a única entrada do verificador, e não menciona o Kafka.</dd><span class="f">historico.csv</span></div>
+  </dl>
+  <div class="flow" aria-label="Fluxo do experimento">
+    <div class="n"><b>Traço</b><small>entra, sai, morre, congela</small></div><span class="arr">→</span>
+    <div class="n"><b>Orquestrador</b><small>aplica com sinais do Linux</small></div><span class="arr">→</span>
+    <div class="n k"><b>Kafka + coletores</b><small>única peça que conhece o Kafka</small></div><span class="arr">→</span>
+    <div class="n"><b>Histórico</b><small>intervalos de posse</small></div><span class="arr">→</span>
+    <div class="n"><b>Verificador</b><small>sobreposição e tempo órfão</small></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="suspensao">
+  <h2><span class="num">2</span>O problema: um trabalhador congela e volta sem saber que foi excluído</h2>
+  <p>Quatro partições e dois trabalhadores. w2 congela por 20 s, como numa pausa longa de
+  coleta de lixo. A sessão é de 10 s. Observe a linha fina de cada partição, que é a
+  atribuição, e as barras grossas, que são a posse de cada trabalhador.</p>
+  <div class="panel wide">
+    <div class="legend">
+      <span><i class="sw thin"></i>atribuição (decisão do coordenador)</span>
+      <span><i class="sw w1"></i>posse de w1</span>
+      <span><i class="sw w2"></i>posse de w2</span>
+      <span><i class="sw" style="border:1px dashed var(--orphan-line)"></i>faixa sem posse</span>
+      <span><i class="sw frozen"></i>processo congelado</span>
+      <span><i class="sw viol"></i>sobreposição de posse</span>
+    </div>
+    <div class="split">
+      <div class="scroll"><svg id="s2" role="img" aria-label="Diagrama de tempo da suspensão de w2"></svg></div>
+      <ol class="steps" id="s2-steps"></ol>
+    </div>
+    <div class="controls">
+      <button class="primary" id="s2-play">Reproduzir</button>
+      <input type="range" id="s2-range" min="24" max="52" step="0.05" value="52" aria-label="Instante">
+      <span class="clock" id="s2-clock">t = 52,0 s</span>
+    </div>
+  </div>
+  <p>Entre os passos 4 e 7, a atribuição diz que p2 e p3 são de w1, e w1 concorda. w2 também
+  acha que são dele. Se w2 escrever num banco de dados nesse intervalo, nada impede: o
+  cercamento por época só protege a confirmação de leitura enviada ao próprio Kafka. A
+  duração da sobreposição é aproximadamente o tempo de sessão. Isso vale para os três
+  protocolos, porque nenhum deles avisa o membro excluído.</p>
+</section>
+
+<!-- 3 -->
+<section id="protocolos">
+  <h2><span class="num">3</span>Os três protocolos de rebalanceamento diante do mesmo evento</h2>
+  <p>Seis partições. w1 e w2 têm três cada. Em t = 1 s entra w3, e o alvo é dois para cada
+  um: p2 sai de w1 e p5 sai de w2, ambas para w3. Cada trabalhador só fica sabendo do
+  rebalanceamento no seu próximo sinal de vida. As áreas hachuradas são tempo órfão.
+  Escolha o protocolo nas abas e acompanhe os passos.</p>
+  <p>O coordenador nunca toma a iniciativa: é sempre o consumidor que fala com ele. No
+  protocolo clássico, depois de descobrir o rebalanceamento no sinal de vida, o consumidor
+  envia um pedido de entrada na rodada e fica esperando; o coordenador segura todos os
+  pedidos abertos e responde a todos de uma vez quando a rodada fecha. É por isso que a
+  posse pode mudar num instante em que ninguém deu sinal. No KIP-848 não há pedido aberto:
+  tudo vai e volta no sinal de vida.</p>
+  <div class="panel wide">
+    <div class="sliders">
+      <div class="slider">
+        <label for="h-range">Intervalo do sinal de vida <b id="h-val">3,0 s</b></label>
+        <input type="range" id="h-range" min="0.5" max="5" step="0.5" value="3">
+        <small>De quanto em quanto tempo cada trabalhador fala com o coordenador. É quando ele descobre que algo mudou.</small>
+      </div>
+      <div class="slider">
+        <label for="d-range">Carga: tempo para largar uma partição <b id="d-val">0,0 s</b></label>
+        <input type="range" id="d-range" min="0" max="4" step="0.25" value="0">
+        <small>Tempo para terminar o lote em andamento e confirmar a posição antes de entregar. Sem produtor, como no piloto, é quase zero.</small>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" id="s3-tabs">
+      <button role="tab" aria-selected="true" data-p="eager">Eager</button>
+      <button role="tab" aria-selected="false" data-p="coop">Cooperativo (KIP-429)</button>
+      <button role="tab" aria-selected="false" data-p="kip">KIP-848</button>
+    </div>
+    <div class="legend">
+      <span><i class="sw thin"></i>atribuição (decisão do coordenador)</span>
+      <span><i class="sw w1"></i>w1</span><span><i class="sw w2"></i>w2</span><span><i class="sw w3"></i>w3</span>
+      <span><i class="sw orphan"></i>partição sem dono</span>
+      <span><i class="sw" style="width:3px;height:11px;border-radius:1px;background:var(--ink-2)"></i>sinal de vida</span>
+      <span><i class="sw" style="height:0;border-top:2px dotted var(--ink-2)"></i>pedido de entrada aberto</span>
+      <span><i class="sw" style="width:8px;height:8px;border-radius:50%;background:var(--ink-2)"></i>resposta do coordenador ao pedido</span>
+    </div>
+    <div class="split">
+      <div class="scroll"><svg id="s3" role="img" aria-label="Rebalanceamento do protocolo escolhido"></svg></div>
+      <ol class="steps" id="s3-steps"></ol>
+    </div>
+    <div class="proto-head"><span class="m" id="s3-m"></span></div>
+    <div class="controls">
+      <button class="primary" id="s3-play">Reproduzir</button>
+      <input type="range" id="s3-range" min="0" max="6" step="0.01" value="6" aria-label="Instante">
+      <span class="clock" id="s3-clock"></span>
+    </div>
+    <div>
+      <h3 style="font-size:16px;margin-bottom:10px">Tempo órfão total, somado nas seis partições</h3>
+      <div class="bars" id="s3-bars"></div>
+    </div>
+  </div>
+  <p>Com carga zero, a barreira do eager custa pouco: todos largam e retomam quase juntos. Os
+  incrementais param só as partições que mudam de dono, mas cada transferência espera o
+  sinal de vida de alguém. Aumente a carga e o eager passa a pagar o tempo de drenagem em
+  <em>todas</em> as partições, enquanto os incrementais pagam só nas transferidas. Esse
+  cruzamento é a pergunta da próxima etapa.</p>
+  <p class="note">Modelo simplificado para mostrar o mecanismo: um rebalanceamento, sinais de
+  vida em fase fixa, sem latência de rede. Os números medidos estão na seção 5.</p>
+</section>
+
+<!-- 4 -->
+<section id="verificador">
+  <h2><span class="num">4</span>O verificador: varredura do histórico</h2>
+  <p>O verificador não sabe de Kafka nem de protocolo. Ele recebe as linhas do histórico,
+  ordena os intervalos de cada partição pelo início e percorre o tempo. Em cada instante,
+  conta quantos trabalhadores distintos têm posse da partição. Zero donos acumula tempo
+  órfão. Dois ou mais acumulam sobreposição. Foi assim que ele foi validado: com
+  históricos inventados, como este, em que a resposta certa é conhecida.</p>
+  <p>Aqui não há linha de atribuição de propósito. O histórico só registra a posse, que é
+  o que os coletores conseguem observar de dentro de cada trabalhador. A atribuição é uma
+  decisão interna do coordenador, e as duas propriedades se medem sobre o que os
+  trabalhadores fizeram, não sobre o que foi decidido.</p>
+  <div class="panel wide">
+    <div class="legend">
+      <span><i class="sw w1"></i>w1</span><span><i class="sw w2"></i>w2</span><span><i class="sw w3"></i>w3</span>
+      <span><i class="sw orphan"></i>sem dono</span><span><i class="sw viol"></i>sobreposição</span>
+    </div>
+    <div class="split">
+      <div class="scroll"><svg id="s4" role="img" aria-label="Varredura do verificador"></svg></div>
+      <ol class="steps" id="s4-steps"></ol>
+    </div>
+    <div class="counters" id="s4-counters"></div>
+    <div class="controls">
+      <button class="primary" id="s4-play">Varrer</button>
+      <input type="range" id="s4-range" min="0" max="12" step="0.05" value="12" aria-label="Posição da varredura">
+      <span class="clock" id="s4-clock"></span>
+    </div>
+    <div class="scroll"><table id="s4-table">
+      <thead><tr><th>trabalhador</th><th>partição</th><th class="num">época</th><th class="num">início (s)</th><th class="num">fim (s)</th><th>fechamento</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p class="note">O histórico de entrada. As linhas acesas são os intervalos que contêm a posição da varredura.</p>
+  </div>
+  <p>A margem de erro do relógio, medida em cada execução, é descontada: sobreposições
+  menores que ela não contam.</p>
+</section>
+
+<!-- 5 -->
+<section id="medicoes">
+  <h2><span class="num">5</span>Medições: uma execução de cada protocolo</h2>
+  <p>Kafka 4.3.2, oito partições, sessão de 10 s, sinal de vida de 3 s, sem produtor. O
+  traço: w1 e w2 entram em t = 0; w3 entra em 15 s; w2 congela de 30 s a 50 s; w3 sai em
+  65 s; w1 é morto em 75 s. Estes são os históricos gravados pelos coletores.</p>
+  <div class="panel wide">
+    <div class="tabs" role="tablist" id="s5-tabs">
+      <button role="tab" aria-selected="true" data-p="eager">Eager</button>
+      <button role="tab" aria-selected="false" data-p="cooperativo">Cooperativo</button>
+      <button role="tab" aria-selected="false" data-p="kip848">KIP-848</button>
+    </div>
+    <div class="legend">
+      <span><i class="sw w1"></i>w1</span><span><i class="sw w2"></i>w2</span><span><i class="sw w3"></i>w3</span>
+      <span><i class="sw orphan"></i>sem dono</span><span><i class="sw viol"></i>sobreposição</span>
+    </div>
+    <div class="scroll"><svg id="s5" role="img" aria-label="Histórico de posse medido"></svg></div>
+    <div class="counters" id="s5-counters"></div>
+  </div>
+  <div class="panel">
+    <h3 style="font-size:16px">Cinco execuções por protocolo</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Protocolo</th><th class="num">Sobreposições por execução</th><th class="num">Maior sobreposição (s)</th><th class="num">Tempo órfão total (s)</th><th class="num">Sem churn (s)</th></tr></thead>
+      <tbody>
+        <tr><td>eager</td><td class="num">3 em todas</td><td class="num">9,78 [9,35; 9,89]</td><td class="num">59,4 [57,9; 66,1]</td><td class="num">10,3</td></tr>
+        <tr><td>cooperativo</td><td class="num">3 em todas</td><td class="num">9,91 [9,89; 9,96]</td><td class="num">80,5 [68,5; 81,3]</td><td class="num">24,3</td></tr>
+        <tr><td>KIP-848</td><td class="num">3 em todas</td><td class="num">10,26 [9,97; 10,37]</td><td class="num">77,9 [65,8; 83,0]</td><td class="num">24,4</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Mediana e, entre colchetes, mínimo e máximo. "Sem churn" é o traço de referência: três trabalhadores entram juntos e nada mais acontece.</p>
+  </div>
+  <div class="prose">
+    <p><strong>Exclusividade.</strong> Os três protocolos produziram as mesmas três
+    sobreposições, uma por partição de w2, com duração próxima de 10 s. É o cenário da
+    seção 2, medido. A duração é fixada pelo tempo de sessão, não pelo protocolo.</p>
+    <p><strong>Disponibilidade.</strong> O tempo órfão foi maior nos incrementais. Sem carga,
+    a barreira do eager custa dezenas de milissegundos, e cada transferência incremental
+    espera um sinal de vida de 3 s. É o caso da seção 3 com a carga em zero. A hipótese de
+    que menos sincronização reduz o tempo órfão não se confirmou nessas condições, e isso
+    define a próxima etapa: variar a carga e o intervalo do sinal de vida.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="etapas">
+  <h2><span class="num">6</span>O que foi feito em TCC I</h2>
+  <div class="ae">
+    <div class="row"><span class="k">A</span><div><h3>Formalização</h3>
+      <p>Vocabulário fechado, modelo de visões, posse e as duas propriedades. Quatro
+      perguntas respondidas no código do cliente Java: qual época usar, se o início de posse
+      precede o primeiro registro, se toda perda é notificada, e qual a referência para a
+      atribuição no coordenador. Toda perda é notificada, exceto a morte do processo, que o
+      orquestrador registra.</p>
+      <span class="art">notas/formalizacao.md</span></div></div>
+    <div class="row"><span class="k">B</span><div><h3>Ambiente e coletor</h3>
+      <p>Broker Kafka 4.3.2 em Docker com os três protocolos. Consumidor Java instrumentado
+      que registra cada callback de atribuição, revogação e perda. Orquestrador que aplica o
+      traço com <code>SIGTERM</code>, <code>SIGKILL</code>, <code>SIGSTOP</code> e
+      <code>SIGCONT</code>. Erro de relógio entre processos abaixo de 0,1 ms.</p>
+      <span class="art">experimento/ambiente, coletor, orquestrador</span></div></div>
+    <div class="row"><span class="k">C</span><div><h3>Verificador</h3>
+      <p>A varredura da seção 4. Validado com históricos sintéticos de violação conhecida:
+      acusa o que foi plantado e nada além. 24 testes, sem Kafka.</p>
+      <span class="art">experimento/verificador</span></div></div>
+    <div class="row"><span class="k">D</span><div><h3>Pilotos</h3>
+      <p>Traço de referência e traço piloto, cinco execuções do piloto e três da referência
+      por protocolo. 24 execuções, nenhuma anomalia de montagem. Tabela agregada e as duas
+      figuras do volume.</p>
+      <span class="art">notas/resultados-piloto.md</span></div></div>
+    <div class="row"><span class="k">E</span><div><h3>Volume</h3>
+      <p>Rascunho completo: introdução reescrita conforme os comentários do orientador,
+      fundamentação, formalização, método, resultados, cronograma e plano de TCC II. Falta
+      transpor para o modelo da disciplina.</p>
+      <span class="art">volume-1/volume.md</span></div></div>
+  </div>
+</section>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function text(parent, x, y, s, cls, anchor) {
+  const t = el('text', { x, y, class: cls || '', 'text-anchor': anchor || 'start' }, parent);
+  t.textContent = s;
+  return t;
+}
+const fmt = (n, d = 1) => n.toFixed(d).replace('.', ',');
+
+/* Posse de uma partição numa linha só: a cor é a do trabalhador que tem a posse; onde dois
+   têm posse ao mesmo tempo, a linha se divide em duas metades, uma por trabalhador. */
+function drawPosse(svg, x, ivs, y, h, tLimit) {
+  const pts = [...new Set(ivs.flatMap(i => [i.s, Math.min(i.f, tLimit)]))].filter(v => v <= tLimit).sort((a, b) => a - b);
+  const owners = (a, b) => { const m = (a + b) / 2; return [...new Set(ivs.filter(i => i.s <= m && m < i.f).map(i => i.w))].sort(); };
+  const segs = [];
+  for (let k = 0; k < pts.length - 1; k++) if (pts[k + 1] > pts[k]) segs.push({ a: pts[k], b: pts[k + 1], w: owners(pts[k], pts[k + 1]) });
+  segs.forEach((g, k) => {
+    if (!g.w.length) return;
+    const next = segs[k + 1], same = next && next.b > next.a && next.w.join() === g.w.join();
+    const wd = Math.max(0, x(g.b) - x(g.a) - (same ? 0 : 1));
+    const hh = h / g.w.length;
+    g.w.forEach((w, j) => el('rect', { x: x(g.a), y: y + j * hh, width: wd, height: hh - (g.w.length > 1 ? 1 : 0), class: 'bar-' + w }, svg));
+  });
+}
+const clear = (svg) => { while (svg.firstChild) svg.removeChild(svg.firstChild); };
+
+/* Relógio de reprodução: avança t de t0 a t1, segura um pouco em cada parada. */
+class Clock {
+  constructor({ t0, t1, rate, holds = [], render, button }) {
+    Object.assign(this, { t0, t1, rate, holds, render, button });
+    this.t = t1; this.playing = false; this.hold = 0;
+    this.tick = this.tick.bind(this);
+    button.addEventListener('click', () => this.playing ? this.pause() : this.play());
+  }
+  setLabel() {
+    const midway = this.t > this.t0 + 1e-9 && this.t < this.t1 - 1e-9;
+    this.button.textContent = this.playing ? 'Pausar' : midway ? 'Continuar' : (this.button.dataset.label || 'Reproduzir');
+  }
+  play() {
+    if (this.t >= this.t1 - 1e-9) this.t = this.t0;
+    if (REDUCED) {
+      const next = this.holds.find(h => h > this.t + 1e-6);
+      this.seek(next ?? this.t1);
+      return;
+    }
+    this.playing = true; this.hold = 0; this.last = null; this.setLabel();
+    requestAnimationFrame(this.tick);
+  }
+  pause() { this.playing = false; this.setLabel(); }
+  seek(t) { this.t = Math.max(this.t0, Math.min(this.t1, t)); this.render(this.t); this.setLabel(); }
+  tick(now) {
+    if (!this.playing) return;
+    if (this.last === null) { this.last = now; requestAnimationFrame(this.tick); return; }
+    const dt = Math.max(0, Math.min(0.1, (now - this.last) / 1000)); this.last = now;
+    if (this.hold > 0) { this.hold -= dt; requestAnimationFrame(this.tick); return; }
+    const prev = this.t;
+    let t = Math.min(this.t1, this.t + dt * this.rate);
+    let stop = false;
+    for (const h of this.holds) if (prev < h && t >= h) { t = h; stop = true; break; }
+    this.t = t; this.render(t);
+    if (stop || t >= this.t1) { this.pause(); return; }
+    requestAnimationFrame(this.tick);
+  }
+}
+
+/* Eixo de tempo comum. */
+function axis(svg, x, y, t0, t1, step, unit) {
+  el('line', { x1: x(t0), x2: x(t1), y1: y, y2: y, class: 'axis' }, svg);
+  for (let v = Math.ceil(t0 / step) * step; v <= t1 + 1e-9; v += step) {
+    el('line', { x1: x(v), x2: x(v), y1: y, y2: y + 4, class: 'axis' }, svg);
+    text(svg, x(v), y + 16, fmt(v, step < 1 ? 1 : 0) + (unit || ''), 'lbl-mono', 'middle');
+  }
+}
+
+/* ---------- 2. Suspensão ---------- */
+(function () {
+  const svg = document.getElementById('s2');
+  const T0 = 24, T1 = 52, W = 800, PL = 70, PR = 14;
+  const x = t => PL + (t - T0) / (T1 - T0) * (W - PL - PR);
+  const steps = [
+    { t: 24.0, s: 'Estado estável, época 3. w1 é dono de p0 e p1; w2 de p2 e p3. Atribuição e posse coincidem.' },
+    { t: 29.2, s: 'Último sinal de vida de w2. O coordenador começa a contar os 10 s da sessão.' },
+    { t: 30.0, s: 'w2 congela (SIGSTOP). Não processa nada, e também não sabe que parou.' },
+    { t: 39.2, s: 'A sessão expira. O coordenador exclui w2, passa para a época 4 e atribui p2 e p3 a w1. Pela atribuição, w2 não é mais dono de nada.' },
+    { t: 39.6, s: 'w1 recebe a nova atribuição no seu sinal de vida e começa a operar p2 e p3. Agora há dois donos.' },
+    { t: 50.0, s: 'w2 volta (SIGCONT) e retoma de onde parou. Ainda se considera dono de p2 e p3 e termina o lote que tinha em mãos. Seu sinal de vida é rejeitado.' },
+    { t: 50.4, s: 'No primeiro poll(), w2 descobre a exclusão (onPartitionsLost) e encerra a posse. A sobreposição durou 10,8 s.' },
+  ];
+  const hb = { w1: [24.5, 27.5, 30.5, 33.5, 36.5, 39.5, 42.5, 45.5, 48.5, 51.5], w2: [26.2, 29.2] };
+  const posse = [
+    { w: 'w1', p: 0, s: 24, f: 52 }, { w: 'w1', p: 1, s: 24, f: 52 },
+    { w: 'w2', p: 2, s: 24, f: 50.4 }, { w: 'w2', p: 3, s: 24, f: 50.4 },
+    { w: 'w1', p: 2, s: 39.6, f: 52 }, { w: 'w1', p: 3, s: 39.6, f: 52 },
+  ];
+  const attrib = p => p < 2 ? [{ w: 'w1', s: 24, f: 52 }] : [{ w: 'w2', s: 24, f: 39.2 }, { w: 'w1', s: 39.2, f: 52 }];
+  const ovl = [{ p: 2, s: 39.6, f: 50.4 }, { p: 3, s: 39.6, f: 50.4 }];
+  const Y = { steps: 12, coord: 46, hb1: 72, hb2: 92, part: 132, gh: 22, gap: 16 };
+  const H = Y.part + 4 * (Y.gh + Y.gap) + 26;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  // passos: escalonar marcadores próximos
+  const levels = []; let lastX = -99, lvl = 0;
+  steps.forEach(st => { const xx = x(st.t); lvl = (xx - lastX < 22) ? (lvl ? 0 : 1) : 0; levels.push(lvl); lastX = xx; });
+
+  const list = document.getElementById('s2-steps');
+  steps.forEach((st, i) => {
+    const li = document.createElement('li');
+    li.tabIndex = 0;
+    li.innerHTML = `<span class="t">t = ${fmt(st.t)} s</span><span>${st.s}</span>`;
+    const go = () => { clock.pause(); clock.seek(i + 1 < steps.length ? steps[i + 1].t : T1); };
+    li.addEventListener('click', go);
+    li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    list.appendChild(li);
+  });
+  const range = document.getElementById('s2-range');
+  const clockEl = document.getElementById('s2-clock');
+
+  function render(t) {
+    clear(svg);
+    let active = 0; steps.forEach((st, i) => { if (st.t < t - 1e-6) active = i; });
+    [...list.children].forEach((li, i) => { li.classList.toggle('on', i === active); li.classList.toggle('future', i > active); });
+    range.value = t; clockEl.textContent = `t = ${fmt(t)} s`;
+
+    // grade e marcas dos passos
+    steps.forEach((st, i) => {
+      const xx = x(st.t) + (i === 0 ? 8 : 0), yy = Y.steps + levels[i] * 0;
+      el('line', { x1: x(st.t), x2: x(st.t), y1: 30, y2: H - 26, class: 'grid' }, svg);
+      const cy = 12 + levels[i] * 0;
+      const cx = xx + (levels[i] ? 20 : 0);
+      el('circle', { cx, cy, r: 9, class: 'stepdot' + (i === active ? ' on' : '') }, svg);
+      text(svg, cx, cy + 3.5, String(i + 1), 'stepnum' + (i === active ? ' on' : ''), 'middle');
+    });
+
+    // coordenador: épocas
+    text(svg, 6, Y.coord + 12, 'coordenador', 'lbl-small');
+    const ep = [{ s: 24, f: 39.2, l: 'época 3 · membros w1, w2' }, { s: 39.2, f: 52, l: 'época 4 · membro w1' }];
+    ep.forEach(e => {
+      if (e.s > t) return;
+      const f = Math.min(e.f, t);
+      el('rect', { x: x(e.s) + 1, y: Y.coord, width: Math.max(0, x(f) - x(e.s) - 2), height: 17, rx: 3, class: 'epoch' }, svg);
+      const curto = e.l.split(' · ')[0], largura = x(f) - x(e.s);
+      if (largura > e.l.length * 6.8 + 14) text(svg, x(e.s) + 7, Y.coord + 12.5, e.l, 'lbl-mono');
+      else if (largura > curto.length * 6.8 + 14) text(svg, x(e.s) + 7, Y.coord + 12.5, curto, 'lbl-mono');
+    });
+
+    // sinais de vida
+    text(svg, 6, Y.hb1 + 10, 'w1 · sinal', 'lbl-small');
+    text(svg, 6, Y.hb2 + 10, 'w2 · sinal', 'lbl-small');
+    if (t > 30) {
+      const f = Math.min(t, 50);
+      el('rect', { x: x(30), y: Y.hb2, width: x(f) - x(30), height: 14, rx: 2, class: 'frozen' }, svg);
+      if (t > 44) text(svg, x(44.6), Y.hb2 + 11, 'congelado', 'lbl-small', 'middle');
+    }
+    hb.w1.filter(h => h < t - 1e-6).forEach(h => el('line', { x1: x(h), x2: x(h), y1: Y.hb1, y2: Y.hb1 + 14, class: 'tick-w1', 'stroke-width': 2.5 }, svg));
+    hb.w2.filter(h => h < t - 1e-6).forEach(h => el('line', { x1: x(h), x2: x(h), y1: Y.hb2, y2: Y.hb2 + 14, class: 'tick-w2', 'stroke-width': 2.5 }, svg));
+    if (t > 50 + 1e-6) {
+      el('line', { x1: x(50), x2: x(50), y1: Y.hb2, y2: Y.hb2 + 14, class: 'tick-rej', 'stroke-width': 2.5 }, svg);
+      text(svg, x(50) + 5, Y.hb2 + 11, 'rejeitado', 'lbl-viol');
+    }
+    if (t > 29.2) {
+      const f = Math.min(t, 39.2), yb = Y.hb2 + 22;
+      el('path', { d: `M${x(29.2)},${yb - 4} V${yb} H${x(f)}` + (t >= 39.2 ? ` V${yb - 4}` : ''), class: 'bracket' }, svg);
+      text(svg, (x(29.2) + x(f)) / 2, yb + 12, t >= 39.2 ? 'sessão: 10 s sem sinal' : `${fmt(f - 29.2)} s sem sinal`, 'lbl-small', 'middle');
+    }
+
+    // partições
+    for (let p = 0; p < 4; p++) {
+      const gy = Y.part + p * (Y.gh + Y.gap);
+      text(svg, 6, gy + 15, 'p' + p, 'lbl-strong');
+      text(svg, PL - 6, gy + 4, 'atrib.', 'lbl-small', 'end');
+      text(svg, PL - 6, gy + 18, 'posse', 'lbl-small', 'end');
+      el('rect', { x: x(T0) + 0.5, y: gy + 7.5, width: x(T1) - x(T0) - 1, height: 13, rx: 1.5, class: 'lane' }, svg);
+      ovl.filter(o => o.p === p && o.s <= t).forEach(o => {
+        const f = Math.min(o.f, t);
+        el('rect', { x: x(o.s), y: gy - 2, width: x(f) - x(o.s), height: Y.gh + 4, class: 'ovl' }, svg);
+        el('rect', { x: x(o.s), y: gy + Y.gh + 2, width: x(f) - x(o.s), height: 2.5, class: 'ovl-line' }, svg);
+        if (p === 2 && t > 42) text(svg, (x(o.s) + x(f)) / 2, gy - 4, 'dois donos', 'lbl-viol', 'middle');
+      });
+      attrib(p).filter(a => a.s <= t).forEach(a => {
+        el('rect', { x: x(a.s), y: gy, width: Math.max(0, x(Math.min(a.f, t)) - x(a.s) - 1), height: 3, class: 'bar-' + a.w }, svg);
+      });
+      drawPosse(svg, x, posse.filter(q => q.p === p), gy + 7, 14, t);
+    }
+    axis(svg, x, H - 22, T0, T1, 2, ' s');
+    el('line', { x1: x(t), x2: x(t), y1: 26, y2: H - 22, class: 'playhead' }, svg);
+  }
+  range.addEventListener('input', () => { clock.pause(); clock.seek(+range.value); });
+  const clock = new Clock({ t0: T0, t1: T1, rate: 2.6, holds: steps.map(s => s.t).filter(t => t > T0), render, button: document.getElementById('s2-play') });
+  render(T1);
+})();
+
+/* ---------- Passos: lista lateral e marcadores numerados ---------- */
+function makeSteps(listEl) {
+  let steps = [];
+  return {
+    set(newSteps, go) {
+      steps = newSteps;
+      listEl.innerHTML = '';
+      steps.forEach((st, i) => {
+        const li = document.createElement('li');
+        li.tabIndex = 0;
+        li.innerHTML = `<span class="t">t = ${fmt(st.t, st.d ?? 1)} s</span><span>${st.s}</span>`;
+        // clicar leva ao fim do passo: o trecho dele já desenhado
+        const end = () => go(i + 1 < steps.length ? steps[i + 1].t : Infinity);
+        li.addEventListener('click', end);
+        li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); end(); } });
+        listEl.appendChild(li);
+      });
+    },
+    // o passo destacado é o que acabou de rodar: o último que começou antes de t
+    active(t) { let a = 0; steps.forEach((st, i) => { if (st.t < t - 1e-6) a = i; }); return a; },
+    update(t) {
+      const a = this.active(t);
+      [...listEl.children].forEach((li, i) => { li.classList.toggle('on', i === a); li.classList.toggle('future', i > a); });
+    },
+    get steps() { return steps; },
+  };
+}
+function stepDots(svg, x, steps, active, y1, y2) {
+  let lastCx = -99;
+  steps.forEach((st, i) => {
+    el('line', { x1: x(st.t), x2: x(st.t), y1, y2, class: 'grid' }, svg);
+    let cx = Math.max(x(st.t), x(steps[0].t) + 9);
+    if (cx - lastCx < 21) cx = lastCx + 21;
+    lastCx = cx;
+    el('circle', { cx, cy: 12, r: 9, class: 'stepdot' + (i === active ? ' on' : '') }, svg);
+    text(svg, cx, 15.5, String(i + 1), 'stepnum' + (i === active ? ' on' : ''), 'middle');
+  });
+}
+
+/* ---------- 3. Protocolos ---------- */
+(function () {
+  const P = 6, J = 1, E = 0.12;
+  const OWN0 = ['w1', 'w1', 'w1', 'w2', 'w2', 'w2'];
+  const TARGET = ['w1', 'w1', 'w3', 'w2', 'w2', 'w3'];
+  const nhb = (off, t, H) => off + Math.max(0, Math.ceil((t - off) / H - 1e-9)) * H;
+
+  // junta passos no mesmo instante e ordena
+  function tidy(steps) {
+    const out = [];
+    steps.slice().sort((a, b) => a.t - b.t).forEach(st => {
+      const prev = out[out.length - 1];
+      if (prev && Math.abs(prev.t - st.t) < 1e-6) prev.s += ' ' + st.s;
+      else out.push({ ...st, d: 2 });
+    });
+    return out;
+  }
+
+  function simulate(H, D) {
+    const off1 = 0.35 * H, off2 = 0.8 * H, off3 = J;
+    const L1 = nhb(off1, J, H), L2 = nhb(off2, J, H);
+    const out = {};
+    const drain = D > 0 ? ` Leva ${fmt(D, 2)} s para terminar o lote antes de entregar.` : '';
+    const start = { t: 0, s: 'Estado inicial: w1 é dono de p0, p1 e p2; w2 de p3, p4 e p5.' };
+
+    // eager
+    {
+      const rv = [L1, L1, L1, L2, L2, L2];
+      const B = Math.max(L1 + D, L2 + D, J), A = B + E;
+      const first = L1 <= L2 ? 'w1' : 'w2';
+      out.eager = {
+        iv: [...Array(P).keys()].flatMap(p => [{ p, w: OWN0[p], s: 0, f: rv[p] }, { p, w: TARGET[p], s: A, f: Infinity }]),
+        at: [...Array(P).keys()].flatMap(p => [{ p, w: OWN0[p], s: 0, f: A }, { p, w: TARGET[p], s: A, f: Infinity }]),
+        ep: [0, B],
+        req: { w1: [[L1, A]], w2: [[L2, A]], w3: [[J, A]] },
+        steps: tidy([
+          start,
+          { t: J, s: 'w3 pede para entrar (JoinGroup) e fica esperando a resposta. O coordenador abre um rebalanceamento, mas w1 e w2 ainda não sabem.' },
+          { t: L1, s: `w1 descobre no seu sinal de vida, larga <b>todas</b> as suas partições (p0, p1 e p2) e envia seu pedido de entrada, que fica aberto.${drain}` },
+          { t: L2, s: `w2 descobre, larga p3, p4 e p5 e envia seu pedido.${drain}` },
+          { t: B, s: `Barreira: todos entraram na nova rodada, e o coordenador fecha a época 2. As partições de ${first} estão sem dono desde que ele descobriu, esperando o outro.` },
+          { t: A, s: 'O coordenador responde aos três pedidos abertos de uma vez, sem esperar sinal de vida: a atribuição e a posse mudam juntas. Cada um retoma o que é seu, e w3 recebe p2 e p5. Todas as seis partições ficaram órfãs em algum momento.' },
+        ]),
+      };
+    }
+    // cooperativo
+    {
+      const B1 = Math.max(L1, L2, J), S1 = B1 + E, R = S1 + D;
+      const g3 = nhb(off3, R, H), B2 = Math.max(R, g3), A2 = B2 + E;
+      const st = [
+        start,
+        { t: J, s: 'w3 pede para entrar e fica esperando. Começa a rodada 1.' },
+        { t: L1, s: 'w1 descobre no sinal de vida e envia seu pedido de entrada na rodada 1 <b>sem largar nada</b>; o pedido fica aberto.' },
+        { t: L2, s: 'w2 descobre e envia o seu, também sem largar nada.' },
+        { t: S1, s: `O coordenador responde aos três pedidos: fim da rodada 1, época 2. A nova atribuição deixa p2 e p5 sem dono (a linha fina some), e w1 larga só p2 e w2 só p5. As outras quatro seguem sem interrupção.${drain}` },
+      ];
+      if (D > 0) st.push({ t: R, s: 'w1 e w2 terminam e pedem a rodada 2.' });
+      if (g3 > R + 1e-6) st.push({ t: g3, s: 'w3 só descobre a rodada 2 no seu próprio sinal de vida e envia seu pedido. Até aqui, p2 e p5 esperam sem dono.' });
+      st.push({ t: A2, s: 'O coordenador responde aos pedidos da rodada 2: época 3, p2 e p5 chegam a w3. Duas épocas para uma única entrada.' });
+      out.coop = {
+        iv: [...Array(P).keys()].flatMap(p => OWN0[p] === TARGET[p]
+          ? [{ p, w: OWN0[p], s: 0, f: Infinity }]
+          : [{ p, w: OWN0[p], s: 0, f: S1 }, { p, w: TARGET[p], s: A2, f: Infinity }]),
+        at: [...Array(P).keys()].flatMap(p => OWN0[p] === TARGET[p]
+          ? [{ p, w: OWN0[p], s: 0, f: Infinity }]
+          : [{ p, w: OWN0[p], s: 0, f: S1 }, { p, w: TARGET[p], s: A2, f: Infinity }]),
+        ep: [0, S1, A2],
+        req: { w1: [[L1, S1], [R, A2]], w2: [[L2, S1], [R, A2]], w3: [[J, S1], [g3, A2]] },
+        steps: tidy(st),
+      };
+    }
+    // KIP-848
+    {
+      const g2 = nhb(off3, L1 + D, H), g5 = nhb(off3, L2 + D, H);
+      const st = [
+        start,
+        { t: J, s: 'w3 entra. A época sobe para 2 e o coordenador calcula a atribuição-alvo na hora: p2 e p5 vão para w3, e a linha fina já muda de cor. Mas w1 e w2 ainda não sabem e continuam operando p2 e p5. Não há rodada, barreira nem pedido aberto: toda a conversa vai no sinal de vida.' },
+        { t: L1, s: `w1 recebe o alvo no seu sinal de vida e larga só p2.${drain}` },
+        { t: L2, s: `w2 recebe o alvo e larga só p5.${drain}` },
+      ];
+      if (D > 0) {
+        st.push({ t: L1 + D, s: 'w1 confirma ao coordenador que largou p2.' });
+        st.push({ t: L2 + D, s: 'w2 confirma que largou p5.' });
+      }
+      st.push({ t: g2, s: 'w3 recebe p2 no seu próprio sinal de vida, depois da confirmação de w1.' });
+      st.push({ t: g5, s: 'w3 recebe p5, depois da confirmação de w2.' });
+      out.kip = {
+        iv: [...Array(P).keys()].flatMap(p => p === 2 ? [{ p, w: 'w1', s: 0, f: L1 }, { p, w: 'w3', s: g2, f: Infinity }]
+          : p === 5 ? [{ p, w: 'w2', s: 0, f: L2 }, { p, w: 'w3', s: g5, f: Infinity }]
+          : [{ p, w: OWN0[p], s: 0, f: Infinity }]),
+        at: [...Array(P).keys()].flatMap(p => OWN0[p] === TARGET[p]
+          ? [{ p, w: OWN0[p], s: 0, f: Infinity }]
+          : [{ p, w: OWN0[p], s: 0, f: J }, { p, w: TARGET[p], s: J, f: Infinity }]),
+        ep: [0, J],
+        req: { w1: [], w2: [], w3: [] },
+        steps: tidy(st),
+      };
+    }
+    const lastStart = Math.max(...Object.values(out).flatMap(o => o.iv.map(i => i.s)));
+    const tEnd = Math.max(6, Math.ceil(lastStart + 1.5));
+    for (const k in out) {
+      const o = out[k];
+      o.iv.forEach(i => { if (i.f === Infinity) i.f = tEnd; });
+      o.at.forEach(i => { if (i.f === Infinity) i.f = tEnd; });
+      o.ep = o.ep.map((e, i, arr) => ({ s: e, f: i + 1 < arr.length ? arr[i + 1] : tEnd, l: `época ${i + 1}` }));
+      o.gaps = [];
+      for (let p = 0; p < P; p++) {
+        const ivs = o.iv.filter(i => i.p === p).sort((a, b) => a.s - b.s);
+        let cur = 0;
+        ivs.forEach(i => { if (i.s > cur + 1e-9) o.gaps.push({ p, s: cur, f: i.s }); cur = Math.max(cur, i.f); });
+        if (cur < tEnd - 1e-9) o.gaps.push({ p, s: cur, f: tEnd });
+      }
+      o.total = o.gaps.reduce((a, g) => a + g.f - g.s, 0);
+      o.max = o.gaps.reduce((a, g) => Math.max(a, g.f - g.s), 0);
+      o.stopped = new Set(o.gaps.map(g => g.p)).size;
+    }
+    return { out, tEnd, hb: { w1: off1, w2: off2, w3: off3 }, H };
+  }
+
+  const W = 800, PL = 70, PR = 14;
+  const svg = document.getElementById('s3');
+  const names = { eager: 'Eager', coop: 'Cooperativo', kip: 'KIP-848' };
+  const hR = document.getElementById('h-range'), dR = document.getElementById('d-range');
+  const barsEl = document.getElementById('s3-bars'), mEl = document.getElementById('s3-m');
+  const range = document.getElementById('s3-range'), clockEl = document.getElementById('s3-clock');
+  const steps = makeSteps(document.getElementById('s3-steps'));
+  let sim, key = 'eager';
+
+  function render(t) {
+    const o = sim.out[key];
+    const x = v => PL + v / sim.tEnd * (W - PL - PR);
+    const coordY = 32, hbTop = 56, hbRow = 15, top = hbTop + 3 * hbRow + 14, rowH = 20, gap = 10;
+    const H = top + P * (rowH + gap) + 24;
+    clear(svg);
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const a = steps.active(t);
+    stepDots(svg, x, steps.steps, a, 26, H - 20);
+    text(svg, 6, coordY + 12, 'coordenador', 'lbl-small');
+    o.ep.filter(e => e.s <= t).forEach(e => {
+      const f = Math.min(e.f, t);
+      el('rect', { x: x(e.s) + 1, y: coordY, width: Math.max(0, x(f) - x(e.s) - 2), height: 17, rx: 3, class: 'epoch' }, svg);
+      if (x(f) - x(e.s) > e.l.length * 6.8 + 14) text(svg, x(e.s) + 7, coordY + 12.5, e.l, 'lbl-mono');
+    });
+    steps.update(t);
+    range.value = t; clockEl.textContent = `t = ${fmt(t, 2)} s`;
+
+    ['w1', 'w2', 'w3'].forEach((w, i) => {
+      const y = hbTop + i * hbRow;
+      text(svg, 6, y + 10, w + ' · sinal', 'lbl-small');
+      const startT = w === 'w3' ? J : sim.hb[w];
+      for (let v = startT; v < Math.min(t, sim.tEnd) - 1e-6; v += sim.H)
+        el('line', { x1: x(v), x2: x(v), y1: y, y2: y + 11, class: 'tick-' + w, 'stroke-width': 2.5 }, svg);
+      // pedido de entrada na rodada: aberto até o coordenador responder
+      (o.req[w] || []).filter(([a]) => a <= t).forEach(([a, b]) => {
+        const f = Math.min(b, t);
+        el('line', { x1: x(a), x2: x(f), y1: y + 5.5, y2: y + 5.5, class: 'tick-' + w, 'stroke-width': 1.5, 'stroke-dasharray': '2 3' }, svg);
+        if (t > b + 1e-6) el('circle', { cx: x(b), cy: y + 5.5, r: 3.2, class: 'bar-' + w }, svg);
+      });
+    });
+    for (let p = 0; p < P; p++) {
+      const y = top + p * (rowH + gap);
+      const py = y + 6, ph = rowH - 6;
+      text(svg, 6, y + 14, 'p' + p, 'lbl-strong');
+      text(svg, PL - 6, y + 4, 'atrib.', 'lbl-small', 'end');
+      text(svg, PL - 6, py + 10, 'posse', 'lbl-small', 'end');
+      o.at.filter(a => a.p === p && a.s <= t).forEach(a => {
+        el('rect', { x: x(a.s), y, width: Math.max(0, x(Math.min(a.f, t)) - x(a.s) - 1), height: 3, class: 'bar-' + a.w }, svg);
+      });
+      el('rect', { x: x(0) + 0.5, y: py + 0.5, width: x(sim.tEnd) - x(0) - 1, height: ph - 1, rx: 2, class: 'lane' }, svg);
+      o.gaps.filter(g => g.p === p && g.s <= t).forEach(g => {
+        el('rect', { x: x(g.s), y: py, width: Math.max(0, x(Math.min(g.f, t)) - x(g.s)), height: ph, class: 'orphan' }, svg);
+      });
+      drawPosse(svg, x, o.iv.filter(i => i.p === p), py, ph, t);
+    }
+    axis(svg, x, H - 20, 0, sim.tEnd, sim.tEnd > 14 ? 2 : 1, ' s');
+    el('line', { x1: x(t), x2: x(t), y1: 26, y2: H - 20, class: 'playhead' }, svg);
+  }
+
+  function renderStatic() {
+    const o = sim.out[key];
+    mEl.textContent = `${names[key]}: ${o.stopped} de 6 partições ficam sem dono · tempo órfão total ${fmt(o.total, 2)} s · maior lacuna ${fmt(o.max, 2)} s`;
+    const max = Math.max(...Object.values(sim.out).map(v => v.total), 0.01);
+    barsEl.innerHTML = Object.keys(names).map(k => `<div class="r"><span>${names[k]}</span><div class="track"><div class="fill" style="width:${sim.out[k].total / max * 100}%"></div></div><span class="v">${fmt(sim.out[k].total, 2)} s</span></div>`).join('');
+    steps.set(o.steps, t => { clock.pause(); clock.seek(t); });
+    clock.holds = o.steps.map(s => s.t).filter(v => v > 0);
+  }
+
+  const clock = new Clock({ t0: 0, t1: 6, rate: 1, holds: [], render, button: document.getElementById('s3-play') });
+  function recompute() {
+    const H = +hR.value, D = +dR.value;
+    document.getElementById('h-val').textContent = fmt(H, 1) + ' s';
+    document.getElementById('d-val').textContent = fmt(D, 2) + ' s';
+    sim = simulate(H, D);
+    clock.pause();
+    clock.t1 = sim.tEnd; clock.rate = Math.max(0.8, sim.tEnd / 9);
+    range.max = sim.tEnd;
+    renderStatic();
+    clock.seek(sim.tEnd);
+  }
+  const tabs = [...document.querySelectorAll('#s3-tabs button')];
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(o => o.setAttribute('aria-selected', String(o === b)));
+    key = b.dataset.p;
+    clock.pause(); renderStatic(); clock.seek(sim.tEnd);
+  }));
+  range.addEventListener('input', () => { clock.pause(); clock.seek(+range.value); });
+  hR.addEventListener('input', recompute); dR.addEventListener('input', recompute);
+  recompute();
+})();
+
+/* ---------- 4. Verificador ---------- */
+(function () {
+  const HIST = [
+    ['w1', 'p0', 3, 0, 4.0, 'revogada'], ['w2', 'p0', 4, 5.2, 12, 'janela'],
+    ['w1', 'p1', 3, 0, 12, 'janela'],
+    ['w2', 'p2', 3, 0, 9.5, 'perdida'], ['w3', 'p2', 4, 6.0, 12, 'janela'],
+    ['w2', 'p3', 3, 0, 3.0, 'revogada'], ['w3', 'p3', 4, 3.0, 12, 'janela'],
+  ].map(([w, r, e, s, f, c]) => ({ w, r, e, s, f, c }));
+  const PARTS = ['p0', 'p1', 'p2', 'p3'];
+  const STEPS = [
+    { t: 0, s: 'A varredura começa. Cada partição tem exatamente um dono: nada a contar.' },
+    { t: 3.0, s: 'p3 passa de w2 para w3. O fim de um intervalo coincide com o início do outro: nem lacuna, nem sobreposição.' },
+    { t: 4.0, s: 'w1 larga p0 (revogada). p0 fica com zero donos e o contador de tempo órfão começa a subir.' },
+    { t: 5.2, s: 'w2 assume p0. A lacuna fecha com 1,2 s de tempo órfão.' },
+    { t: 6.0, s: 'w3 assume p2, mas w2 ainda não registrou a perda. p2 passa a ter dois donos e o contador de sobreposição sobe.' },
+    { t: 9.5, s: 'w2 registra a perda de p2 (perdida). A sobreposição fecha com 3,5 s. A varredura segue até o fim da janela, em 12 s: os intervalos ainda abertos (janela) contam como cobertura, mas não entram na sobreposição. Resultado: p0 com 1,2 s órfão, p2 com 3,5 s de sobreposição.' },
+  ];
+  const T1 = 12, W = 800, PL = 44, PR = 14;
+  const x = t => PL + t / T1 * (W - PL - PR);
+  const svg = document.getElementById('s4');
+  const rowH = 24, gap = 26, top = 36, H = top + PARTS.length * (rowH + gap) + 10;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const tbody = document.querySelector('#s4-table tbody');
+  tbody.innerHTML = HIST.map(h => `<tr><td>${h.w}</td><td>${h.r}</td><td class="num">${h.e}</td><td class="num">${fmt(h.s)}</td><td class="num">${fmt(h.f)}</td><td class="mono">${h.c}</td></tr>`).join('');
+  const rows = [...tbody.children];
+  const counters = document.getElementById('s4-counters');
+  const range = document.getElementById('s4-range'), clockEl = document.getElementById('s4-clock');
+  const steps = makeSteps(document.getElementById('s4-steps'));
+
+  function segments(r) {
+    const ivs = HIST.filter(h => h.r === r);
+    const pts = [...new Set([0, T1, ...ivs.flatMap(i => [i.s, i.f])])].sort((a, b) => a - b);
+    const seg = [];
+    for (let k = 0; k < pts.length - 1; k++) {
+      const a = pts[k], b = pts[k + 1], m = (a + b) / 2;
+      seg.push({ a, b, n: new Set(ivs.filter(i => i.s <= m && m < i.f).map(i => i.w)).size });
+    }
+    return seg;
+  }
+  const SEG = Object.fromEntries(PARTS.map(r => [r, segments(r)]));
+
+  function render(s) {
+    clear(svg);
+    range.value = s; clockEl.textContent = `varredura em ${fmt(s, 2)} s`;
+    stepDots(svg, x, STEPS, steps.active(s), 26, H - 18);
+    steps.update(s);
+    PARTS.forEach((r, k) => {
+      const y = top + k * (rowH + gap);
+      text(svg, 6, y + rowH / 2 + 4, r, 'lbl-strong');
+      el('rect', { x: x(0) + 0.5, y: y + 0.5, width: x(T1) - x(0) - 1, height: rowH - 1, rx: 2, class: 'lane' }, svg);
+      SEG[r].forEach(g => {
+        if (g.a >= s) return;
+        const b = Math.min(g.b, s);
+        if (g.n === 0) el('rect', { x: x(g.a), y, width: x(b) - x(g.a), height: rowH, class: 'orphan' }, svg);
+        if (g.n >= 2) el('rect', { x: x(g.a), y: y - 3, width: x(b) - x(g.a), height: rowH + 6, class: 'ovl' }, svg);
+      });
+      drawPosse(svg, x, HIST.filter(h => h.r === r), y + 3, rowH - 6, T1);
+      HIST.filter(h => h.r === r).forEach(h => text(svg, x(h.s) + 5, y + rowH + 13, `${h.w} · e${h.e}`, 'lbl-small'));
+      SEG[r].forEach(g => { if (g.n >= 2 && g.a < s) el('rect', { x: x(g.a), y: y + rowH + 3, width: x(Math.min(g.b, s)) - x(g.a), height: 2.5, class: 'ovl-line' }, svg); });
+    });
+    axis(svg, x, H - 18, 0, T1, 1, ' s');
+    el('line', { x1: x(s), x2: x(s), y1: 26, y2: H - 18, class: 'playhead' }, svg);
+
+    HIST.forEach((h, i) => rows[i].classList.toggle('on', h.s <= s && s < h.f && s < T1));
+    counters.innerHTML = PARTS.map(r => {
+      let orf = 0, sob = 0;
+      SEG[r].forEach(g => {
+        const b = Math.min(g.b, s); if (b <= g.a) return;
+        if (g.n === 0) orf += b - g.a; if (g.n >= 2) sob += b - g.a;
+      });
+      const cur = SEG[r].find(g => g.a <= s && s < g.b);
+      const now = cur ? cur.n : (SEG[r].at(-1)?.n ?? 0);
+      const st = now === 0 ? 'sem dono' : now === 1 ? '1 dono' : `<span class="viol">${now} donos</span>`;
+      return `<div class="counter"><span class="p">${r} · agora: ${st}</span><span class="v">órfão ${fmt(orf, 2)} s</span><span class="v">${sob > 0 ? `<span class="viol">sobreposição ${fmt(sob, 2)} s</span>` : 'sobreposição 0,00 s'}</span></div>`;
+    }).join('');
+  }
+  const btn = document.getElementById('s4-play'); btn.dataset.label = 'Varrer';
+  const clock = new Clock({ t0: 0, t1: T1, rate: 1.6, holds: STEPS.map(s => s.t).filter(t => t > 0 && t < T1), render, button: btn });
+  steps.set(STEPS, t => { clock.pause(); clock.seek(t); });
+  range.addEventListener('input', () => { clock.pause(); clock.seek(+range.value); });
+  clock.seek(T1);
+})();
+
+/* ---------- 5. Medições reais ---------- */
+(function () {
+  const REAL = {"eager":{"iv":[["w1",0,2,1.293,16.301,"revogada"],["w1",0,3,16.328,40.333,"revogada"],["w1",0,4,40.345,52.35,"revogada"],["w1",0,5,52.364,67.368,"revogada"],["w1",0,6,67.379,75.0,"externo"],["w2",0,7,85.43,90.0,"janela"],["w2",1,2,1.304,16.301,"revogada"],["w2",1,3,16.329,50.131,"perdida"],["w1",1,4,40.345,52.35,"revogada"],["w1",1,5,52.364,67.368,"revogada"],["w1",1,6,67.379,75.0,"externo"],["w2",1,7,85.43,90.0,"janela"],["w1",2,2,1.293,16.301,"revogada"],["w1",2,3,16.328,40.333,"revogada"],["w1",2,4,40.345,52.35,"revogada"],["w1",2,5,52.364,67.368,"revogada"],["w1",2,6,67.379,75.0,"externo"],["w2",2,7,85.43,90.0,"janela"],["w2",3,2,1.304,16.301,"revogada"],["w2",3,3,16.329,50.131,"perdida"],["w3",3,4,40.345,52.354,"revogada"],["w3",3,5,52.366,65.016,"revogada"],["w1",3,6,67.379,75.0,"externo"],["w2",3,7,85.43,90.0,"janela"],["w1",4,2,1.293,16.301,"revogada"],["w1",4,3,16.328,40.333,"revogada"],["w1",4,4,40.345,52.35,"revogada"],["w2",4,5,52.365,67.369,"revogada"],["w2",4,6,67.38,85.386,"revogada"],["w2",4,7,85.43,90.0,"janela"],["w2",5,2,1.304,16.301,"revogada"],["w2",5,3,16.329,50.131,"perdida"],["w3",5,4,40.345,52.354,"revogada"],["w3",5,5,52.366,65.016,"revogada"],["w2",5,6,67.38,85.386,"revogada"],["w2",5,7,85.43,90.0,"janela"],["w1",6,2,1.293,16.301,"revogada"],["w3",6,3,16.338,40.328,"revogada"],["w3",6,4,40.345,52.354,"revogada"],["w3",6,5,52.366,65.016,"revogada"],["w2",6,6,67.38,85.386,"revogada"],["w2",6,7,85.43,90.0,"janela"],["w2",7,2,1.304,16.301,"revogada"],["w3",7,3,16.338,40.328,"revogada"],["w3",7,4,40.345,52.354,"revogada"],["w2",7,5,52.365,67.369,"revogada"],["w2",7,6,67.38,85.386,"revogada"],["w2",7,7,85.43,90.0,"janela"]],"sob":[[1,["w2","w1"],40.345,50.131],[3,["w2","w3"],40.345,50.131],[5,["w2","w3"],40.345,50.131]],"acoes":[["entrar","w1",0.001],["entrar","w2",0.002],["entrar","w3",15.001],["suspender","w2",30.0],["retomar","w2",50.0],["sair","w3",65.0],["matar","w1",75.0]]},"cooperativo":{"iv":[["w1",0,1,1.34,75.0,"externo"],["w2",0,10,85.454,90.0,"janela"],["w1",1,1,1.34,75.0,"externo"],["w2",1,10,85.454,90.0,"janela"],["w1",2,1,1.34,75.0,"externo"],["w2",2,10,85.454,90.0,"janela"],["w1",3,1,1.34,16.363,"revogada"],["w3",3,5,19.374,65.015,"revogada"],["w1",3,9,67.423,75.0,"externo"],["w2",3,10,85.454,90.0,"janela"],["w1",4,1,1.34,4.333,"revogada"],["w2",4,3,7.354,50.136,"perdida"],["w1",4,6,40.395,52.404,"revogada"],["w2",4,8,55.411,90.0,"janela"],["w1",5,1,1.34,4.333,"revogada"],["w2",5,3,7.354,50.136,"perdida"],["w3",5,6,40.396,65.015,"revogada"],["w2",5,9,67.423,90.0,"janela"],["w1",6,1,1.34,4.333,"revogada"],["w2",6,3,7.354,50.136,"perdida"],["w3",6,6,40.396,65.015,"revogada"],["w2",6,9,67.423,90.0,"janela"],["w1",7,1,1.34,4.333,"revogada"],["w2",7,3,7.354,16.365,"revogada"],["w3",7,5,19.374,52.405,"revogada"],["w2",7,8,55.411,90.0,"janela"]],"sob":[[4,["w2","w1"],40.395,50.136],[5,["w2","w3"],40.396,50.136],[6,["w2","w3"],40.396,50.136]],"acoes":[["entrar","w1",0.001],["entrar","w2",0.002],["entrar","w3",15.001],["suspender","w2",30.0],["retomar","w2",50.0],["sair","w3",65.0],["matar","w1",75.0]]},"kip848":{"iv":[["w2",0,2,1.22,50.501,"perdida"],["w3",0,5,40.243,65.014,"revogada"],["w2",0,7,65.63,90.0,"janela"],["w2",1,2,1.22,50.501,"perdida"],["w3",1,5,40.243,65.014,"revogada"],["w2",1,7,65.63,90.0,"janela"],["w2",2,2,1.22,50.501,"perdida"],["w1",2,5,40.543,75.0,"externo"],["w2",2,8,83.641,90.0,"janela"],["w2",3,2,1.22,16.259,"revogada"],["w3",3,4,19.23,65.014,"revogada"],["w1",3,7,67.568,75.0,"externo"],["w2",3,8,83.641,90.0,"janela"],["w2",4,2,1.22,4.245,"revogada"],["w1",4,3,4.272,75.0,"externo"],["w2",4,8,83.641,90.0,"janela"],["w2",5,2,1.22,4.245,"revogada"],["w1",5,3,4.272,75.0,"externo"],["w2",5,8,83.641,90.0,"janela"],["w2",6,2,1.22,4.245,"revogada"],["w1",6,3,4.272,52.556,"revogada"],["w2",6,6,53.619,90.0,"janela"],["w2",7,2,1.22,4.245,"revogada"],["w1",7,3,4.272,16.287,"revogada"],["w3",7,4,19.23,52.274,"revogada"],["w2",7,6,53.619,90.0,"janela"]],"sob":[[0,["w2","w3"],40.243,50.501],[1,["w2","w3"],40.243,50.501],[2,["w2","w1"],40.543,50.501]],"acoes":[["entrar","w1",0.0],["entrar","w2",0.002],["entrar","w3",15.001],["suspender","w2",30.0],["retomar","w2",50.0],["sair","w3",65.0],["matar","w1",75.0]]}};
+  const T1 = 90, W = 800, PL = 44, PR = 14, P = 8;
+  const x = t => PL + t / T1 * (W - PL - PR);
+  const svg = document.getElementById('s5');
+  const counters = document.getElementById('s5-counters');
+  const labels = { entrar: 'entra', sair: 'sai', matar: 'morto', suspender: 'congela', retomar: 'volta' };
+
+  function render(key) {
+    const d = REAL[key];
+    const rowH = 16, gap = 6, top = 34, H = top + P * (rowH + gap) + 24;
+    clear(svg); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    let lastX = -999, lvl = 0;
+    d.acoes.filter(a => a[2] > 1).forEach(([acao, w, t]) => {
+      const xx = x(t); lvl = (xx - lastX < 70) ? 1 - lvl : 0; lastX = xx;
+      el('line', { x1: xx, x2: xx, y1: 6 + lvl * 13, y2: H - 22, class: 'mark' }, svg);
+      text(svg, xx + 4, 12 + lvl * 13, `${w} ${labels[acao]}`, 'lbl-small');
+    });
+    let total = 0, maxGap = 0;
+    for (let p = 0; p < P; p++) {
+      const y = top + p * (rowH + gap);
+      text(svg, 6, y + 12, 'p' + p, 'lbl-strong');
+      const ivs = d.iv.filter(i => i[1] === p).sort((a, b) => a[3] - b[3]);
+      // lacunas
+      let cur = 0;
+      const gaps = [];
+      ivs.forEach(i => { if (i[3] > cur + 1e-6) gaps.push([cur, i[3]]); cur = Math.max(cur, i[4]); });
+      if (cur < T1 - 1e-6) gaps.push([cur, T1]);
+      gaps.forEach(([a, b]) => { total += b - a; maxGap = Math.max(maxGap, b - a); el('rect', { x: x(a), y, width: x(b) - x(a), height: rowH, class: 'orphan' }, svg); });
+      // faixas: distribuição gulosa
+      const laneEnd = [];
+      const placed = ivs.map(i => { let l = laneEnd.findIndex(e => e <= i[3] + 1e-6); if (l < 0) { l = laneEnd.length; laneEnd.push(0); } laneEnd[l] = i[4]; return [i, l]; });
+      const nl = laneEnd.length, lh = nl > 1 ? rowH / nl : rowH;
+      placed.forEach(([i, l]) => el('rect', { x: x(i[3]), y: y + l * lh, width: Math.max(1, x(i[4]) - x(i[3]) - 1), height: lh - (nl > 1 ? 1 : 0), rx: 1.5, class: 'bar-' + i[0] }, svg));
+      d.sob.filter(s => s[0] === p).forEach(s => el('rect', { x: x(s[2]), y: y + rowH + 1.5, width: x(s[3]) - x(s[2]), height: 3, class: 'ovl-line' }, svg));
+    }
+    axis(svg, x, H - 20, 0, T1, 10, ' s');
+    const maxSob = Math.max(...d.sob.map(s => s[3] - s[2]));
+    counters.innerHTML = [
+      ['sobreposições', `<span class="viol">${d.sob.length}</span>`],
+      ['maior sobreposição', `<span class="viol">${fmt(maxSob, 2)} s</span>`],
+      ['tempo órfão total', `${fmt(total, 1)} s`],
+      ['maior lacuna', `${fmt(maxGap, 2)} s`],
+    ].map(([k, v]) => `<div class="counter"><span class="p">${k} · nesta execução</span><span class="v">${v}</span></div>`).join('');
+  }
+  const tabs = [...document.querySelectorAll('#s5-tabs button')];
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(o => o.setAttribute('aria-selected', String(o === b)));
+    render(b.dataset.p);
+  }));
+  render('eager');
+})();
+</script>
